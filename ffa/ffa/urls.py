@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('membership', include('frontend.urls')),
+    path('about-us', include('frontend.urls')),
     path ('', include('frontend.urls')),
     path('', include('webapp.urls'))
 ]
