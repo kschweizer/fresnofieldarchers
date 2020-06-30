@@ -5,4 +5,4 @@ from webapp.models import Blogpost
 class BlogpostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogpost
-        fields = '__all__'
+        fields = ['subject', 'message', 'date']
