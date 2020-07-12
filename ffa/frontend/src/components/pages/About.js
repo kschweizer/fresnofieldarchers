@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import './About.css';
+import React, { Component } from 'react';
 
 export class About extends Component {
     render() {
@@ -29,7 +28,7 @@ export class About extends Component {
                     </div>
                     <div className="col-sm-4">
                         <div className="photo-container">
-                            <img className="photo" src="/static/frontend/ffa_history1.png" alt=""/>
+                            <img className="photo" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/ffa_history1.png" alt=""/>
                         </div>                           
                     </div>
                 </div>

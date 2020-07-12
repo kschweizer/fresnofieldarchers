@@ -1,0 +1,97 @@
+// About.css
+.about-section {
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: tan;
+}
+
+.section-title {
+    color: rgb(247, 229, 196);
+    padding-bottom: 1rem;
+}
+
+.photo-container {
+    text-align: center;
+}
+
+.photo {
+    border: 1px solid tan;
+}
+
+// Blogposts.css
+.blog-container {
+    padding: 2rem;
+    margin-right: 5rem;
+}
+
+.blogpost {
+    padding: 2rem;
+    border: 2px solid tan;
+}
+
+.blog-body {
+    font-size: large;
+}
+
+// Banner.css
+.carousel-item {
+    max-height: 400px;
+}
+
+// Header.css
+.navbar {
+    border-top: 1px solid tan;
+    border-bottom: 10px solid tan;
+}
+
+.logo-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.logo {
+    max-width: 8rem;
+}
+
+.nav-text {
+    font-size: 1.1rem;
+    color: tan;
+}
+
+@media (min-width: 992px){
+    .navbar li {
+        margin-left : 2em;
+        margin-right : 2em;
+    }
+}
+
+// Photoform.scss
+.photo-form {
+    padding: 30px;
+    border: 2px solid tan;
+}
+
+// Photogallery.scss
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+    padding-top: 2rem;
+}
+.my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+    column-width: 80;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 30px;
+}
+
+.my-masonry-grid_column > div > img {
+    max-width: 100%;
+}

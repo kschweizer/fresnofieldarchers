@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './Banner.css';
 
 export class Banner extends Component {
     render() {
@@ -13,13 +12,13 @@ export class Banner extends Component {
                     </ol>
                     <div className="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="center-block w-100" src="/static/frontend/elephant_shot.png" alt="First slide"/>
+                            <img class="center-block w-100" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/elephant_shot.png" alt="First slide"/>
                         </div>
                         <div class="carousel-item">
-                            <img class="center-block w-100" src="/static/frontend/elephant_shot.png" alt="Second slide"/>
+                            <img class="center-block w-100" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/elephant_shot.png" alt="Second slide"/>
                         </div>
                         <div class="carousel-item">
-                            <img class="center-block w-100" src="/static/frontend/elephant_shot.png" alt="Third slide"/>
+                            <img class="center-block w-100" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/elephant_shot.png" alt="Third slide"/>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

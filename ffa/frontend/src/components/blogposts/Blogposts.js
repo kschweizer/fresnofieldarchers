@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBlogposts, deleteBlogpost } from '../../actions/blogposts';
 
-import './Blogposts.css';
-
 export class Blogposts extends Component {
     static propTypes = {
         blogposts: PropTypes.array.isRequired

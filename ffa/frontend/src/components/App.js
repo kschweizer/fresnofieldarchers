@@ -11,6 +11,9 @@ import store from '../store';
 import Home from './pages/Home';
 import About from './pages/About';
 import Membership from './pages/Membership';
+import Photos from './pages/Photos';
+
+import '../styles/App.scss';
 
 class App extends Component {
     render() {
@@ -23,6 +26,7 @@ class App extends Component {
                             <Switch>                               
                                 <Route exact path="/about-us" component={ About } />
                                 <Route exact path="/membership" component={ Membership } />
+                                <Route exact path="/photos" component={ Photos } />
                                 <Route path="/" component={ Home } />
                             </Switch>
                         </div>

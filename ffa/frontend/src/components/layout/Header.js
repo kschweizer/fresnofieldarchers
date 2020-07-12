@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './Header.css';
-import './Banner.css';
 import { Banner } from './Banner';
 
 export class Header extends Component {
@@ -10,7 +8,7 @@ export class Header extends Component {
                 <div className="logo-container container-fluid  bg-dark">
                     <div className="row justify-content-center" href="/">
                             <a href="/">
-                                <img src="/static/frontend/ffalogo.svg" className="logo" alt=""/> 
+                                <img src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/ffalogo.svg" className="logo" alt=""/> 
                             </a>
                     </div>
                 </div>
@@ -42,7 +40,7 @@ export class Header extends Component {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="">
+                                <a className="nav-link" href="/photos">
                                     <div className="nav-text">
                                         PHOTOS
                                     </div>
@@ -51,8 +49,6 @@ export class Header extends Component {
                         </ul>
                     </div>
                 </nav>
-
-                <Banner />
             </div>
         )
     }
