@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST, GET_BLOGPOSTSPAGE } from './types';
+import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST } from './types';
 
 // GET BLOGPOSTS
 export const getBlogposts = (page)=> dispatch => {

@@ -1,4 +1,4 @@
-import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST, GET_BLOGPOSTSPAGE } from '../actions/types.js';
+import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST } from '../actions/types.js';
 
 const initialState = {
     blogposts: []
