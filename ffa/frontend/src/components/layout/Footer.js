@@ -1,13 +1,69 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { FaEnvelope, FaFacebook } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 export class Footer extends Component {
     render() {
         return (
-            <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d176018.44251727717!2d-119.58616231915614!3d36.722750528088554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80950dccd22a7e5f%3A0x802d73af0f1c4634!2sFresno%20Field%20Archers!5e0!3m2!1sen!2sus!4v1592723428050!5m2!1sen!2sus" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
+            <div className="site-footer">
+              <div className="container">
+                <div className="row">
+                  <div className="col-sm-12 col-md-6">
+                    <h6>Contact</h6>
+                    <ul className="footer-links">
+                        <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+                        <li><h4><FaEnvelope /> <a href="mailto: fresnofieldarchers@gmail.com">fresnofieldarchers@gmail.com</a></h4></li>
+                        <li><h4>38548 Dunlap Rd, Dunlap, CA 93621</h4></li>
+                        </IconContext.Provider>
+                    </ul>
+                  </div>
+        
+                  <div className="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul className="footer-links">
+                      <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+                      <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+                      <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+                    </ul>
+                  </div>
+        
+                  <div className="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul className="footer-links">
+                      <li><a href="/about-us">About Us</a></li>
+                      <li><a href="/membership">Membership</a></li>
+                      <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-8 col-sm-6 col-xs-12">
+                    <p className="copyright-text"> &copy; 2020 Kyle Schweizer </p>
+                  </div>
+                  <div className="col-md-4 col-sm-6 col-xs-12">
+                    <ul className="social-icons">
+                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '80%', height: '80%', marginBottom: '2px' }}}>
+                        <li>
+                            <a className="facebook" href="https://www.facebook.com/fresnoarchers/" target="_blank">
+                                <FaFacebook />
+                            </a>
+                        </li>
+                        <li>
+                            <a className="email" href="mailto: fresnofieldarchers@gmail.com" target="_blank">
+                                <FaEnvelope />
+                            </a>                        
+                        </li>
+                        </IconContext.Provider> 
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        </div>
         )
-    }
-}
+    };
+};
 
-export default Footer
+export default Footer;

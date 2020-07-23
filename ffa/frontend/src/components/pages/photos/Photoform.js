@@ -24,19 +24,19 @@ export class Photoform extends Component {
     onSubmit = e => {
         e.preventDefault();
         const { images, title, description } = this.state;
-        let data = new FormData();
-        for (let i = 0; i < images.length; i++) {
-            data.append(`image${i}`, images[i], images[i].fileName);
-            data.append(`title${i}`, title);
-            data.append(`description${i}`, description);
+        const num_images = images.length;
+        for (let i = 0; i < num_images; i++) {
+            let data = new FormData();
+            data.append(`image`, images[i]);
+            data.append(`title`, title);
+            data.append(`description`, description);
+            this.props.addPhoto(data, i+1, num_images);
         }
-        data.append('count', images.length);
-        this.props.addPhoto(data);
     };
 
 
     render() {
-        const { imagess, title, description } = this.state;
+        const { images, title, description } = this.state;
         return (
             <div className="photo-form">
                 <label>

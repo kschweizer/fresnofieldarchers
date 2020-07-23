@@ -20,7 +20,7 @@ export class Photogallery extends Component {
                 <Masonry breakpointCols={3} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                     {this.props.photos.map(photo => ( 
                         <div key={photo.id}>
-                            <img src={photo.image}/> 
+                            <img src={photo.image} /> 
                         </div>                     
                     ))}
                 </Masonry>

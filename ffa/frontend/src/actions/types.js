@@ -4,3 +4,7 @@ export const ADD_BLOGPOST = "ADD_BLOGPOST";
 
 export const GET_PHOTOS = "GET_PHOTOS";
 export const ADD_PHOTO = "ADD_PHOTO";
+
+export const GET_ERRORS = "GET_ERRORS";
+
+export const CREATE_MESSAGE = "CREATE_MESSAGE";

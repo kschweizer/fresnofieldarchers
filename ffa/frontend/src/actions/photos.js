@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { createMessage } from './messages';
 
 import { GET_PHOTOS, ADD_PHOTO } from './types';
 
@@ -15,7 +16,7 @@ export const getPhotos = ()=> dispatch => {
 };
 
 // ADD PHOTO
-export const addPhoto = (photo)=> dispatch => {
+export const addPhoto = (photo, current, total)=> dispatch => {
     axios
         .post('/api/webapp/photos/', photo, {
             headers: {
@@ -25,9 +26,11 @@ export const addPhoto = (photo)=> dispatch => {
             }
         })
         .then(res => {
+            dispatch(createMessage({ photoAdded: `Photos Added: ${current}/${total}` }));
             dispatch({
                 type: ADD_PHOTO,
                 payload: res.data
             });
-        }).catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
 };

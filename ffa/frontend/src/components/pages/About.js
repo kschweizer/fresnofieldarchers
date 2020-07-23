@@ -29,7 +29,10 @@ export class About extends Component {
                     <div className="col-sm-4">
                         <div className="photo-container">
                             <img className="photo" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/ffa_history1.png" alt=""/>
-                        </div>                           
+                            <p>
+                                Fresno Archers circa 1954
+                            </p>                      
+                        </div>        
                     </div>
                 </div>
             </div>
