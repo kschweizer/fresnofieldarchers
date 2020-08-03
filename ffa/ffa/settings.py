@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'webapp',
     'frontend',
     'storages',
+    'knox',
+    'accounts'
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,7 +146,7 @@ AWS_ACCESS_KEY_ID = 'AKIA6GITKHQCLJVLZNEM'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'fresnofieldarchers'
 
-AWS_S3_FILE_OVERWRITE = False
+AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

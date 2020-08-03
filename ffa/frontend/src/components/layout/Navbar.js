@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
     constructor(props) {
@@ -14,10 +15,10 @@ export class Navbar extends Component {
     }
 
     handleScroll(e) {
-        if (window.scrollY < 157 && this.state.scrolling == true) {
+        if (window.scrollY < 180 && this.state.scrolling == true) {
             this.setState({scrolling: false});
         }
-        else if (window.scrollY > 157 && this.state.scrolling == false) {
+        else if (window.scrollY > 180 && this.state.scrolling == false) {
             this.setState({scrolling: true});
         }
     }
@@ -25,77 +26,77 @@ export class Navbar extends Component {
         return (
             <Fragment>
             {/* DEFAULT NAVBAR */}
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark" >
+            <nav className="navbar navbar-expand-sm" >
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/about-us">
+                            <Link to="/about-us" className="nav-link">
                                 <div className="nav-text">
                                     ABOUT
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="">
+                            <Link to="/events" className="nav-link">
                                 <div className="nav-text">
                                     EVENTS
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/membership">
+                            <Link to="/membership" className="nav-link">
                                 <div className="nav-text">
                                     MEMBERSHIP
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/photos">
+                            <Link to="/photos" className="nav-link">
                                 <div className="nav-text">
                                     PHOTOS
                                 </div>
-                            </a>
+                            </Link>
                         </li>                            
                     </ul>
                 </div>
             </nav>
             {/* STICKY NAVBAR */}
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark navbar-sticky" style={{position: 'fixed', display: this.state.scrolling ? 'block' : 'none', top: 0, width: '100%', zIndex: 999}}>
+            <nav className="navbar navbar-expand-sm navbar-sticky" style={{position: 'fixed', display: this.state.scrolling ? 'block' : 'none', top: 0, width: '100%', zIndex: 999}}>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/about-us">
+                            <Link to="/about-us" className="nav-link">
                                 <div className="nav-text">
                                     ABOUT
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="">
+                            <Link to="/events" className="nav-link">
                                 <div className="nav-text">
                                     EVENTS
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/membership">
+                            <Link to="/membership" className="nav-link">
                                 <div className="nav-text">
                                     MEMBERSHIP
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/photos">
+                            <Link to="/photos" className="nav-link">
                                 <div className="nav-text">
                                     PHOTOS
                                 </div>
-                            </a>
+                            </Link>
                         </li>                            
                     </ul>
                 </div>

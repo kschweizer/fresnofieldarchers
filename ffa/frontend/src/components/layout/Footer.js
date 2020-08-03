@@ -19,12 +19,7 @@ export class Footer extends Component {
                   </div>
         
                   <div className="col-xs-6 col-md-3">
-                    <h6>Categories</h6>
-                    <ul className="footer-links">
-                      <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                      <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                      <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                    </ul>
+                    
                   </div>
         
                   <div className="col-xs-6 col-md-3">
@@ -32,7 +27,6 @@ export class Footer extends Component {
                     <ul className="footer-links">
                       <li><a href="/about-us">About Us</a></li>
                       <li><a href="/membership">Membership</a></li>
-                      <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
                     </ul>
                   </div>
                 </div>

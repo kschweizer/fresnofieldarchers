@@ -14,27 +14,24 @@ export class Blogposts extends Component {
 
     render() {
         return (
-            <Fragment>
-                <h1 className="blog-header"><a id="newsletter"></a>Newsletters</h1>
-                <div className="blog-container">
-                    { this.props.blogposts.map(blogpost => (
-                        <div className="blogpost">
-                            <h2 className="blog-title">{blogpost.subject}</h2>
-                            <h5 className="blog-date">{blogpost.date}</h5>
-                            <p className="blog-body">{blogpost.message}</p>
-                            <button className="btn btn-danger btn-sm" onClick={this.props.deleteBlogpost.bind(this, blogpost.id)}>Delete</button>
-                        </div>
-                    ))}
-                    { this.props.previous !== null &&
-                        <a href="#newsletter"><button className="btn btn-primary btn-sm" onClick={this.prevPage}>PREVIOUS</button></a>
-                    }
+            <div className="blog-container">
+                { this.props.blogposts.map(blogpost => (
+                    <article className="blogpost">
+                        <h2 className="blog-title">{blogpost.subject}</h2>
+                        <h5 className="blog-date">{blogpost.date}</h5>
+                        <p className="blog-body">{blogpost.message}</p>
+                        <button className="btn btn-danger btn-sm" onClick={this.props.deleteBlogpost.bind(this, blogpost.id)}>Delete</button>
+                    </article>
+                ))}
+                { this.props.previous !== null &&
+                    <button className="blog-button btn btn-primary btn-sm" onClick={this.prevPage}>PREVIOUS</button>
+                }
 
-                    
-                    { this.props.next !== null && 
-                        <a href="#newsletter"><button className="btn btn-primary btn-sm" onClick={this.nextPage}>NEXT</button></a>   
-                    }
-                </div>
-            </Fragment>
+                
+                { this.props.next !== null && 
+                    <button className="blog-button btn btn-primary btn-sm" onClick={this.nextPage}>NEXT</button> 
+                }
+            </div>
         );
     }
 

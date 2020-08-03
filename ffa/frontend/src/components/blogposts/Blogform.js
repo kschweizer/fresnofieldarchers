@@ -26,33 +26,35 @@ export class Blogform extends Component {
     render() {
         const { subject, message } = this.state;
         return (
-            <div className="card card-body mt-4 mb-4">
-                <h2>Add Newspost</h2>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Subject</label>
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="subject"
-                            onChange={this.onChange}
-                            value={subject}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Message</label>
-                        <textarea
-                            className="form-control"
-                            type="text"
-                            name="message"
-                            onChange={this.onChange}
-                            value={message}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </div>
-                </form>                
+            <div id="blogform">
+                <div className="card card-body mt-4 mb-4">
+                    <h2>Add Newspost</h2>
+                    <form onSubmit={this.onSubmit}>
+                        <div className="form-group">
+                            <label>Subject</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="subject"
+                                onChange={this.onChange}
+                                value={subject}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Message</label>
+                            <textarea
+                                className="form-control"
+                                type="text"
+                                name="message"
+                                onChange={this.onChange}
+                                value={message}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-primary">Submit</button>
+                        </div>
+                    </form>                
+                </div>
             </div>
         );
     }

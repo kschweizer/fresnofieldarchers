@@ -1,7 +1,10 @@
 // REACT
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+// Routing
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from '../common/PrivateRoute';
 
 // Alert Provider
 import { Provider as AlertProvider } from 'react-alert';
@@ -15,10 +18,13 @@ import About from './pages/About';
 import Membership from './pages/Membership';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
+import Login from './accounts/Login';
+import Register from './accounts/Register';
 
 // Redux Provider and store
 import { Provider } from 'react-redux';
 import store from '../store';
+import { loadUser } from '../actions/auth';
 
 // STYLES
 import '../styles/App.scss';
@@ -30,24 +36,31 @@ const alertOptions = {
 }
 
 class App extends Component {
+
+    componentDidMount() {
+        store.dispatch(loadUser());
+    }
+
     render() {
         return (
             <Provider store={store}>
                 <AlertProvider template={AlertTemplate}
                 {...alertOptions}>
                 <Router>
-                    <Fragment>                   
-                        <Header />
-                        <Alerts />
-                        <div className='container-fluid p-0'>
+                    <Fragment>      
+                                
+                            <Header />
+                            <Alerts />
                             <Switch>                               
                                 <Route exact path="/about-us" component={ About } />
                                 <Route exact path="/membership" component={ Membership } />
                                 <Route exact path="/photos" component={ Photos } />
-                                <Route path="/" component={ Home } />
-                            </Switch>
-                        </div>
-                        <Footer />
+                                <Route exact path="/register" component={ Register } />
+                                <Route exact path="/login" component={ Login } />
+                                <Route exact path="/" component={ Home } />
+                            </Switch>                           
+                            <Footer />
+                          
                     </Fragment>
                 </Router>
                 </AlertProvider>
