@@ -21,10 +21,7 @@
 
 // Blogposts.css
 
-.blog-container {
-  margin-left: 5rem;
-  margin-right: 2rem;
-}
+
 
 .blogpost {
   padding: 2rem;
@@ -57,6 +54,10 @@
 }
 
 // Header.css
+.login-button > a {
+  color: rgb(27, 27, 27);
+}
+
 .header {
   background-color: rgb(204, 204, 204);
 }

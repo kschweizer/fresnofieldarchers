@@ -18,7 +18,7 @@ export class Header extends Component {
                 <div className="row">
                     <div className="ml-auto">
                         <button 
-                        className="btn btn-info btn-sm" 
+                        className="logout-button" 
                         onClick={this.props.logout}>
                             Logout
                         </button>                       
@@ -30,7 +30,7 @@ export class Header extends Component {
         const guestLinks = (
             <div className="container-fluid">
                 <div className="row">
-                    <button className="btn btn-primary ml-auto">
+                    <button className="login-button btn ml-auto">
                         <Link to="/login">
                             Login
                         </Link>                        

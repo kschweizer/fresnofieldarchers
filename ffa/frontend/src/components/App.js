@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 // Routing
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../common/PrivateRoute';
 
 // Alert Provider

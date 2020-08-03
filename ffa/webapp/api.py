@@ -22,11 +22,10 @@ class ImageViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = ImageSerializer
 
-    def create(self, request):
+    def post(self, request):
         post_data = request.data
-        for i in range(int(post_data['count'])):
-            image = post_data['image{}'.format(i)]
-            title = post_data['title{}'.format(i)]
-            description = post_data['description{}'.format(i)]
-            Image.objects.create(image=image, title=title, description=description)      
+        image = post_data['image']
+        title = post_data['title']
+        description = post_data['description']
+        Image.objects.create(image=image, title=title, description=description)      
         return HttpResponse({'message': 'Image Uploaded'}, status=200)
