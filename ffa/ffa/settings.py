@@ -142,13 +142,13 @@ REST_FRAMEWORK = {
 }
 
 # S3 BUCKET CONFIG
-AWS_ACCESS_KEY_ID = 'AKIA6GITKHQCLJVLZNEM'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIA6GITKHQCC6F2INWG'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'fresnofieldarchers'
 
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-MEDIA_ROOT = 'media'
-MEDIA_URL = f'https://fresnofieldarchers.s3-us-west-1.amazonaws.com/{MEDIA_ROOT}/'
+#MEDIA_ROOT = 'media'
+#MEDIA_URL = f'https://fresnofieldarchers.s3-us-west-1.amazonaws.com/{MEDIA_ROOT}/'
