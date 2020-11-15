@@ -16,6 +16,7 @@ import Footer from './layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Membership from './pages/Membership';
+import Work from './pages/members/Work';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
@@ -54,10 +55,11 @@ class App extends Component {
                             <Switch>                               
                                 <Route exact path="/about-us" component={ About } />
                                 <Route exact path="/membership" component={ Membership } />
+                                <Route exact path="/members/work" component={ Work } />
                                 <Route exact path="/photos" component={ Photos } />
                                 <Route exact path="/register" component={ Register } />
                                 <Route exact path="/login" component={ Login } />
-                                <Route exact path="/" component={ Home } />
+                                <Route exact path="/" component={ ()=> <Home/> } />
                             </Switch>                           
                             <Footer />
                           

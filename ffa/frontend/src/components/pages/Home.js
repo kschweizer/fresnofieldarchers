@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, Suspense } from 'react'
 import { connect } from 'react-redux';
 import Blogform from '../blogposts/Blogform';
 import Blogposts from '../blogposts/Blogposts';
 import Banner from '../layout/Banner';
 import PropTypes, { bool } from 'prop-types';
+import { FaBaby } from 'react-icons/fa';
 
 export class Home extends Component {
     state = {
@@ -14,6 +15,11 @@ export class Home extends Component {
         auth: PropTypes.object.isRequired
     };
 
+    componentDidMount() {
+        if (window.FB) {
+            window.FB.XFBML.parse(document.getElementById('fb-page'));
+        }
+    }
     
     toggleEdit = () => this.setState({ edit: !this.state.edit });
 
