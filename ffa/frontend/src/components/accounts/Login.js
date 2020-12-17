@@ -25,7 +25,7 @@ export class Login extends Component {
     render() {
         // REDIRECT TO HOME IF ALREADY LOGGED IN
         if (this.props.isAuthenticated) {
-            return <Redirect to="/" />
+            return <Redirect to="/account" />
         }
         const { username, password } = this.state;
         return (

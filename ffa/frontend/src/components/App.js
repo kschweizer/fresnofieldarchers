@@ -15,12 +15,14 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import Events from './pages/Events';
 import Membership from './pages/Membership';
 import Work from './pages/members/Work';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
+import Account from './accounts/Account';
 
 // Redux Provider and store
 import { Provider } from 'react-redux';
@@ -52,14 +54,17 @@ class App extends Component {
                                 
                             <Header />
                             <Alerts />
-                            <Switch>                               
-                                <Route exact path="/about-us" component={ About } />
-                                <Route exact path="/membership" component={ Membership } />
-                                <Route exact path="/members/work" component={ Work } />
-                                <Route exact path="/photos" component={ Photos } />
-                                <Route exact path="/register" component={ Register } />
-                                <Route exact path="/login" component={ Login } />
-                                <Route exact path="/" component={ ()=> <Home/> } />
+                            <Switch>
+                                <Route exact path="/" component={Home} />                               
+                                <Route exact path="/about-us" component={About} />
+                                <Route exact path="/events" component={Events} />
+                                <Route exact path="/membership" component={Membership} />
+                                <PrivateRoute exact path="/members/work" component={Work} />
+                                <Route exact path="/photos" component={Photos} />
+                                <Route exact path="/register" component={Register} />
+                                <Route exact path="/login" component={Login} />
+                                <PrivateRoute exact path="/account" component={Account} />
+                                
                             </Switch>                           
                             <Footer />
                           

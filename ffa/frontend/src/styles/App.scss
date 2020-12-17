@@ -1,3 +1,27 @@
+//Home.scss
+
+.home {
+  min-height: 2000px;
+  padding-top: 15px;
+  background-image: url("/static/long_elephant.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.home-content {
+  min-height: 1500px;
+  padding-top: 15px;
+  background-color: rgb(27, 27, 27, 0.3);
+  border-radius: 5%;
+  border: 2px solid rgb(27, 27, 27, 0.8);
+}
+
+
+.fb-page {
+  margin-top: 25px;
+}
+
+
 // About.css
 .about-section {
   padding: 2rem;
@@ -54,9 +78,11 @@
 }
 
 // Header.css
-.login-button > a {
-  color: rgb(27, 27, 27);
+.media-bar > ul {
+  margin-left: auto;
 }
+
+
 
 .header {
   background-color: rgb(204, 204, 204);
@@ -65,21 +91,63 @@
 .navbar {
   border-top: 1px solid rgb(27, 27, 27);
   border-bottom: 1px solid rgb(27, 27, 27);
+  padding: 4px;
   background-color: rgb(126, 126, 126);
 }
 
 .logo-container {
-    padding-top: 15px;
-    padding-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
-    max-width: 8rem;
+  max-width: 8rem;
 }
 
 .nav-text {
-    font-size: 1.1rem;
-    color: rgb(27, 27, 27);
+  font-size: 1.1rem;
+  font-family: Lato; 
+  font-weight: 700;
+  color: rgb(27, 27, 27);
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.nav-text::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: rgb(212, 12, 12);
+  height: 4px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.nav-text:hover::before, .nav-text:focus::before, .nav-text:active::before {
+  left: 0;
+  right: 0;
+}
+
+.nav-text:hover {
+  color: rgb(212, 12, 12);
 }
 
 @media (min-width: 992px){
@@ -87,6 +155,64 @@
         margin-left : 2em;
         margin-right : 2em;
     }
+}
+
+
+// Events.scss
+.safari-event {
+  margin-top: 2rem;
+}
+.safari-logo {
+  max-width: 80%;
+  max-height: auto;
+  border-radius: 25px;
+  border: 2px solid rgb(224, 224, 224)
+}
+
+
+// Membership.scss
+.membership {
+  font-family: "Merriweather", serif;
+  margin: 2rem auto 2rem auto;
+  font-size: 1.2rem;
+  color: rgb(204, 204, 204);
+}
+
+// Photoform.scss
+.photo-form {
+    padding: 30px;
+    border: 2px solid tan;
+}
+
+// Photogallery.scss
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    //margin-left: -30px; /* gutter size offset */
+    width: auto;
+    padding-top: 1rem;
+}
+.my-masonry-grid_column {
+    padding-left: 0px; /* gutter size */
+    background-clip: padding-box;
+    column-width: 80;
+    
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: transparent;
+}
+
+.my-masonry-grid_column > div > img {
+    max-width: 100%;
+    padding: 3px;
+}
+
+// REACT ICONS STYLES
+.react-icons {
+  vertical-align: bottom;
 }
 
 // Footer.css
@@ -215,7 +341,7 @@
   -o-transition:all .2s linear;
   transition:all .2s linear
 }
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+.social-icons a:active,.social-icons a:hover
 {
   color:#fff;
   background-color:#29aafe
@@ -251,49 +377,4 @@
     margin-right:0;
     font-weight:600
   }
-}
-
-// Membership.scss
-.membership {
-  font-family: "Merriweather", serif;
-  margin: 2rem auto 2rem auto;
-  font-size: 1.2rem;
-  color: rgb(204, 204, 204);
-}
-
-// Photoform.scss
-.photo-form {
-    padding: 30px;
-    border: 2px solid tan;
-}
-
-// Photogallery.scss
-.my-masonry-grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
-    display: flex;
-    //margin-left: -30px; /* gutter size offset */
-    width: auto;
-    padding-top: 1rem;
-}
-.my-masonry-grid_column {
-    padding-left: 0px; /* gutter size */
-    background-clip: padding-box;
-    column-width: 80;
-    
-}
-
-/* Style your items */
-.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-    background: transparent;
-}
-
-.my-masonry-grid_column > div > img {
-    max-width: 100%;
-    padding: 3px;
-}
-
-// REACT ICONS STYLES
-.react-icons {
-  vertical-align: bottom;
 }
