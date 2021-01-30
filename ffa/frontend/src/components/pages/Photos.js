@@ -45,4 +45,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(Photos)
+export default connect(mapStateToProps)(Photos);

@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, Suspense } from 'react'
 import { connect } from 'react-redux';
 import Blogform from '../blogposts/Blogform';
 import Blogposts from '../blogposts/Blogposts';
 import Banner from '../layout/Banner';
 import PropTypes, { bool } from 'prop-types';
+import { FaBaby } from 'react-icons/fa';
+import './Home.scss';
 
 export class Home extends Component {
     state = {
@@ -14,6 +16,11 @@ export class Home extends Component {
         auth: PropTypes.object.isRequired
     };
 
+    componentDidMount() {
+        if (window.FB) {
+            window.FB.XFBML.parse(document.getElementById('fb-page'));
+        }
+    }
     
     toggleEdit = () => this.setState({ edit: !this.state.edit });
 
@@ -24,37 +31,62 @@ export class Home extends Component {
         const { edit } = this.state;
 
         const authHome = (
-            <div className="Home container-lg">
-                <div className="row">
-                    <div className="col-8">
-                        <button className="btn-warning btn-sm" onClick={this.toggleEdit} >
-                            Edit
-                        </button>
-                        { edit? <Blogform /> : null }
-                        <Blogposts />  
-                    </div>    
-                    <div className="col-4">
-                        <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
-                    </div> 
+            <div className="home container-fluid">
+                <div className="home-header row">
+                    <h1 className="title col-sm-4">Announcements</h1>
+                    <section className="home-background1">
+                        <span></span>
+                    </section>
+                    <section className="home-background2">
+                        <span></span>
+                    </section>
+                </div>
+                <div className="home-content container-lg">
+                    <div className="row">
+                        <div className="col-sm-7">
+                            <button className="btn-warning btn-sm" onClick={this.toggleEdit} >
+                                Edit
+                            </button>
+                            { edit? <Blogform /> : null }
+                            <Blogposts />  
+                        </div>
+                        <span className="col-sm-1"></span>   
+                        <div className="col-sm-4">
+                            <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
+                        </div> 
+                    </div>
                 </div>
             </div>      
         );
 
         const guestHome = (
-            <div className="Home container-md"> 
-                <div className="row">
-                    <div className="col-8">
-                        <Blogposts />  
-                    </div>    
-                    <div className="col-4">
-                        <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="400" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
-                    </div> 
+            <div className="home container-fluid">
+                <div className="home-header row">
+                    <div className="title col-sm-4">
+                        <h1>ANNOUNCEMENTS</h1>
+                    </div>
+                    <section className="home-background1">
+                        <span></span>
+                    </section>
+                    <section className="home-background2">
+                        <span></span>
+                    </section>
+                </div>
+                <div className="home-content container-lg">
+                    <div className="row">
+                        <div className="col-sm-7">
+                            <Blogposts />  
+                        </div>    
+                        <span className="col-sm-1"></span> 
+                        <div className="col-sm-4">
+                            <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
+                        </div> 
+                    </div>
                 </div>
             </div>
         );
         return (
             <Fragment>
-                <Banner />
                 { isAuthenticated? authHome : guestHome }
             </Fragment>
         );
@@ -65,4 +97,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Home);

@@ -2,9 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBlogposts, deleteBlogpost } from '../../actions/blogposts';
+import './Blogposts.scss';
 
 export class Blogposts extends Component {
     static propTypes = {
+        auth: PropTypes.object.isRequired,
         blogposts: PropTypes.array.isRequired
     };
 
@@ -13,6 +15,7 @@ export class Blogposts extends Component {
     }
 
     render() {
+        const {isAuthenticated} = this.props.auth;
         return (
             <div className="blog-container">
                 { this.props.blogposts.map(blogpost => (
@@ -20,7 +23,7 @@ export class Blogposts extends Component {
                         <h2 className="blog-title">{blogpost.subject}</h2>
                         <h5 className="blog-date">{blogpost.date}</h5>
                         <p className="blog-body">{blogpost.message}</p>
-                        <button className="btn btn-danger btn-sm" onClick={this.props.deleteBlogpost.bind(this, blogpost.id)}>Delete</button>
+                        {isAuthenticated? <button className="btn btn-danger btn-sm" onClick={this.props.deleteBlogpost.bind(this, blogpost.id)}>Delete</button> : null}
                     </article>
                 ))}
                 { this.props.previous !== null &&
@@ -49,6 +52,7 @@ export class Blogposts extends Component {
 }
 
 const mapStateToProps = state => ({
+    auth: state.auth,
     blogposts: state.blogposts.blogposts,
     next: state.blogposts.next,
     previous: state.blogposts.previous,

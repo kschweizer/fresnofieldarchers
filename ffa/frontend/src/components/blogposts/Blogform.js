@@ -16,6 +16,13 @@ export class Blogform extends Component {
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+    onKeyDown = e => {
+        if (e.keyCode== 9) {
+            e.preventDefault();
+        }
+
+    }
+
     onSubmit = e => {
         e.preventDefault();
         const { subject, message } = this.state;
@@ -46,6 +53,7 @@ export class Blogform extends Component {
                                 className="form-control"
                                 type="text"
                                 name="message"
+                                onKeyDown={this.onKeyDown}
                                 onChange={this.onChange}
                                 value={message}
                             />

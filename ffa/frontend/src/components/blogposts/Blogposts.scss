@@ -1,0 +1,32 @@
+// Blogposts.css
+
+.blog-container {
+    background-color: rgb(0, 0, 0, .2);
+    margin-bottom: 80px;
+  }
+  
+  .blogpost {
+    margin: 20px;
+    font-family: Lato;
+    border-bottom: 1px solid rgb(212, 12, 12);
+  }
+  
+  .blog-title >  {
+    color: white;
+    font-size: 32px;
+  }
+  
+  .blog-date {
+    color: rgb(150, 150, 150);
+    margin: 0.8rem 0 2rem;
+  }
+  
+  .blog-body { 
+    font-size: 20px;
+    color: white;
+  }
+  
+  .blog-button {
+    margin: 0 auto;
+    display: block;
+  }

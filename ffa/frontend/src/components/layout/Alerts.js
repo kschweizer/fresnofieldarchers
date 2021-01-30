@@ -22,6 +22,7 @@ export class Alerts extends Component {
             if (message.blogpostAdded) alert.success(message.blogpostAdded);
             if (message.blogpostDeleted) alert.success(message.blogpostDeleted);
             if (message.photoAdded) alert.success(message.photoAdded);
+            if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
         };
     }
 

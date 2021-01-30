@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPhoto } from '../../../actions/photos';
+import '../Photos.scss';
 
 export class Photoform extends Component {
     state = {

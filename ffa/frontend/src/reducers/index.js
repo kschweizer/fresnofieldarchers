@@ -10,5 +10,5 @@ export default combineReducers({
     photos,
     errors,
     messages,
-    auth
+    auth,
 });

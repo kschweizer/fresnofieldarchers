@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createMessage } from './messages';
+import { tokenConfig } from './auth';
 
 import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST, GET_ERRORS } from './types';
 
@@ -19,9 +20,9 @@ export const getBlogposts = (page)=> dispatch => {
 };
 
 // DELETE BLOGPOSTS
-export const deleteBlogpost = (id)=> dispatch => {
+export const deleteBlogpost = (id)=> (dispatch, getState) => {
     axios
-        .delete(`/api/webapp/blogposts/${id}`)
+        .delete(`/api/webapp/blogposts/${id}`, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ blogpostDeleted: "Post Deleted" }));
             dispatch({
@@ -32,9 +33,9 @@ export const deleteBlogpost = (id)=> dispatch => {
 };
 
 // ADD BLOGPOSTS
-export const addBlogpost = (blogpost)=> dispatch => {
+export const addBlogpost = (blogpost)=> (dispatch, getState) => {
     axios
-        .post('/api/webapp/blogposts/', blogpost)
+        .post('/api/webapp/blogposts/', blogpost, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ blogpostAdded: "Post Added" }));
             dispatch({
