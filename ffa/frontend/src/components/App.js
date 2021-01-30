@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Events from './pages/Events';
 import Membership from './pages/Membership';
+import Range from './pages/Range';
 import Work from './pages/members/Work';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
@@ -51,7 +52,7 @@ class App extends Component {
                 {...alertOptions}>
                 <Router>
                     <Fragment>      
-                                
+                        <div className="wrapper">    
                             <Header />
                             <Alerts />
                             <Switch>
@@ -59,6 +60,7 @@ class App extends Component {
                                 <Route exact path="/about-us" component={About} />
                                 <Route exact path="/events" component={Events} />
                                 <Route exact path="/membership" component={Membership} />
+                                <Route exact path="/range" component={Range} />
                                 <PrivateRoute exact path="/members/work" component={Work} />
                                 <Route exact path="/photos" component={Photos} />
                                 <Route exact path="/register" component={Register} />
@@ -67,7 +69,7 @@ class App extends Component {
                                 
                             </Switch>                           
                             <Footer />
-                          
+                        </div>
                     </Fragment>
                 </Router>
                 </AlertProvider>

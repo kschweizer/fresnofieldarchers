@@ -22,11 +22,13 @@ urlpatterns = [
     path('about-us', include('frontend.urls')),
     path('events', include('frontend.urls')),
     path('membership', include('frontend.urls')),
+    path('range', include('frontend.urls')),
     path('photos', include('frontend.urls')),
     path('login', include('frontend.urls')),
     path('register', include('frontend.urls')),
     path('logout', include('frontend.urls')),
     path('members/work', include('frontend.urls')),
+    path('account', include('frontend.urls')),
     path ('', include('frontend.urls')),
     path('', include('webapp.urls')),
     path('', include('accounts.urls'))

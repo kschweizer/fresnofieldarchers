@@ -1,0 +1,30 @@
+// Photoform.scss
+.photo-form {
+    padding: 30px;
+    border: 2px solid tan;
+}
+
+// Photogallery.scss
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    //margin-left: -30px; /* gutter size offset */
+    width: auto;
+    padding-top: 1rem;
+}
+.my-masonry-grid_column {
+    padding-left: 0px; /* gutter size */
+    background-clip: padding-box;
+    column-width: 80;  
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    background: transparent;
+}
+
+.my-masonry-grid_column > div > img {
+    max-width: 100%;
+    padding: 3px;
+}

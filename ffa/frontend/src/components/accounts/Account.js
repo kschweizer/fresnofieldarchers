@@ -9,7 +9,7 @@ export class Account extends Component {
     }
 
 
-    logout() {
+    logout = () => {
         this.props.logout();
     }
 
@@ -20,7 +20,7 @@ export class Account extends Component {
         return (
             <div>
                 { username && email ? <div> {username}, {email} </div> : null }
-                <div className="button btn-danger" onClick={this.logout}>
+                <div className="button btn btn-danger" onClick={this.logout}>
                     LOGOUT
                 </div>
             </div>

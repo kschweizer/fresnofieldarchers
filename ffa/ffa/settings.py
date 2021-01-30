@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p9qe+2w#imnjnkzp-%b6sf$q9-k-lmhdaxxyuuz$ztogs$dxx$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '2b59833ae3bd.ngrok.io']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'frontend',
     'storages',
     'knox',
-    'accounts'
+    'accounts',
 ]
 
 
@@ -111,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "accounts.Member"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -141,14 +143,25 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5
 }
 
+##################################################################
+##################################################################
+
 # S3 BUCKET CONFIG
-AWS_ACCESS_KEY_ID = 'AKIA6GITKHQCC6F2INWG'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'fresnofieldarchers'
+# SET AS ENVIRONMENT KEYS
+
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+##################################################################
+##################################################################
+
+
 
 #MEDIA_ROOT = 'media'
 #MEDIA_URL = f'https://fresnofieldarchers.s3-us-west-1.amazonaws.com/{MEDIA_ROOT}/'

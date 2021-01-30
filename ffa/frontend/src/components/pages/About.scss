@@ -1,0 +1,70 @@
+
+// About.css
+.about-section {
+}
+
+.about-section-background1 {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 200vh;
+    bottom: -10vh;
+    transform: skewY(-8deg);
+    transform-origin: center;
+    background: linear-gradient(to right, rgb(212, 12, 12), rgb(255, 12, 12), rgb(150, 12, 12));
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+  .about-section-background2 {
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 300vh;
+    bottom: -10vh;
+    transform: skewY(8deg);
+    transform-origin: center;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(212, 12, 12));
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+  
+  .section-title {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 48px;
+    color: rgb(212, 12, 12);
+    -webkit-text-stroke: rgb(0, 0, 0);
+    -webkit-text-stroke-width: 2px;
+  }
+  
+  @media screen and (min-width: 601px) {
+    .section-title {
+      font-size: 48px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .section-title {
+      font-size: 32px;
+    }
+  }
+  
+  .about-text {
+    background-color: rgb(0, 0, 0, 0.4);
+    font-size: 1.2rem;
+    color: rgb(224, 224, 224);
+  }
+  
+  .photo-container {
+    text-align: center;
+    color: rgb(224, 224, 224);
+  }
+  
+  .photo {
+    max-width: 100%;
+    border: 1px solid rgb(204, 204, 204);
+  }
