@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'ffa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ffa',
-        'USER': 'kyle',
-        'PASSWORD': 'password',
+        'NAME': 'fresnofieldarchers',
+        'USER': 'ffamanager',
+        'PASSWORD': 'danwedhandrog',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -132,6 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend", "static", "frontend")

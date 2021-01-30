@@ -8,6 +8,9 @@ media
 migrations/
 !migrations/__init__.py
 
+# MAIN JS #
+static/frontend/main.js
+
 # Backup files # 
 *.bak 
 
