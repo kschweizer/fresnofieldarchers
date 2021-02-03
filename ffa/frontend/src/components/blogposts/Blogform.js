@@ -34,7 +34,7 @@ export class Blogform extends Component {
         const { subject, message } = this.state;
         return (
             <div id="blogform">
-                <div className="card card-body mt-4 mb-4">
+                <div className="card card-body bg-secondary mt-4 mb-4">
                     <h2>Add Newspost</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">

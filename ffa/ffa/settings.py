@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'ffa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fresnofieldarchers',
+        'NAME': 'ffa',
         'USER': 'kyle',
         'PASSWORD': 'password',
         'HOST': 'localhost',
