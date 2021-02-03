@@ -18,7 +18,6 @@ import About from './pages/About';
 import Events from './pages/Events';
 import Membership from './pages/Membership';
 import Range from './pages/Range';
-import Work from './pages/members/Work';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
@@ -61,7 +60,6 @@ class App extends Component {
                                 <Route exact path="/events" component={Events} />
                                 <Route exact path="/membership" component={Membership} />
                                 <Route exact path="/range" component={Range} />
-                                <PrivateRoute exact path="/members/work" component={Work} />
                                 <Route exact path="/photos" component={Photos} />
                                 <Route exact path="/register" component={Register} />
                                 <Route exact path="/login" component={Login} />

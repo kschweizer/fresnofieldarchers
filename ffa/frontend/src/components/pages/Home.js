@@ -33,16 +33,14 @@ export class Home extends Component {
         const authHome = (
             <div className="home container-fluid">
                 <div className="home-header row">
-                    <h1 className="title col-sm-4">Announcements</h1>
-                    <section className="home-background1">
-                        <span></span>
-                    </section>
-                    <section className="home-background2">
-                        <span></span>
-                    </section>
+                    <div className="title col-sm-4">ANNOUNCEMENTS</div>
                 </div>
                 <div className="home-content container-lg">
                     <div className="row">
+                        <div className="col-sm-4">
+                            <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
+                        </div> 
+                        <span className="col-sm-1"></span>   
                         <div className="col-sm-7">
                             <button className="btn-warning btn-sm" onClick={this.toggleEdit} >
                                 Edit
@@ -50,10 +48,6 @@ export class Home extends Component {
                             { edit? <Blogform /> : null }
                             <Blogposts />  
                         </div>
-                        <span className="col-sm-1"></span>   
-                        <div className="col-sm-4">
-                            <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
-                        </div> 
                     </div>
                 </div>
             </div>      
@@ -63,23 +57,17 @@ export class Home extends Component {
             <div className="home container-fluid">
                 <div className="home-header row">
                     <div className="title col-sm-4">
-                        <h1>ANNOUNCEMENTS</h1>
+                        ANNOUNCEMENTS
                     </div>
-                    <section className="home-background1">
-                        <span></span>
-                    </section>
-                    <section className="home-background2">
-                        <span></span>
-                    </section>
                 </div>
                 <div className="home-content container-lg">
                     <div className="row">
-                        <div className="col-sm-7">
-                            <Blogposts />  
-                        </div>    
-                        <span className="col-sm-1"></span> 
                         <div className="col-sm-4">
                             <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
+                        </div> 
+                        <span className="col-sm-1"></span> 
+                        <div className="col-sm-7">
+                            <Blogposts />  
                         </div> 
                     </div>
                 </div>

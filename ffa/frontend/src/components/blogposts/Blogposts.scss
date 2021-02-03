@@ -6,6 +6,7 @@
   }
   
   .blogpost {
+    white-space: break-spaces;
     margin: 20px;
     font-family: Lato;
     border-bottom: 1px solid rgb(212, 12, 12);
@@ -29,4 +30,8 @@
   .blog-button {
     margin: 0 auto;
     display: block;
+  }
+
+  textarea.form-control {
+    min-height: 150px;
   }
