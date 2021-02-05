@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createMessage } from './messages';
 
 import { GET_PHOTOS, ADD_PHOTO } from './types';
+import { tokenConfig } from './auth';
 
 // GET PHOTOS
 export const getPhotos = ()=> dispatch => {
@@ -16,21 +17,15 @@ export const getPhotos = ()=> dispatch => {
 };
 
 // ADD PHOTO
-export const addPhoto = (photo, current, total)=> dispatch => {
+export const addPhoto = (photo, current, total)=> (dispatch, getState) => {
     axios
-        .post('/api/webapp/photos/', photo, {
-            headers: {
-                'accept': 'application/json',
-                'Accept-Language': 'en-US,en;q=0.8',
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-        .then(res => {
-            dispatch(createMessage({ photoAdded: `Photos Added: ${current}/${total}` }));
-            dispatch({
-                type: ADD_PHOTO,
-                payload: res.data
-            });
-        })
-        .catch(err => console.log(err));
+        .post('/api/webapp/photos/', photo, tokenConfig(getState))
+            .then(res => {
+                dispatch(createMessage({ photoAdded: `Photos Added: ${current}/${total}` }));
+                dispatch({
+                    type: ADD_PHOTO,
+                    payload: res.data
+                });
+            })
+            .catch(err => console.log(err));
 };
