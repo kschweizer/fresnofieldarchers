@@ -18,7 +18,7 @@ export class About extends Component {
                     </div> 
                 </div>
                 <div className="general-info container-lg">
-                    <h1 className="title">
+                    <h1 className="subtitle">
                         Where to reach us?
                     </h1>
                     <div className="contact">
@@ -28,12 +28,16 @@ export class About extends Component {
                         </div>
                         <div className="row">
                             <div className="col-2 contact-icon"><FaEnvelope/></div>
-                            <div className="col-10"><a href="mailto: fresnofieldarchers@gmail.com" target="_blank">fresnofieldarchers@gmail.com <FaExternalLinkAlt/> </a></div>
+                            <div className="col-10"><a href="mailto: fresnofieldarchers@gmail.com" target="_blank">fresnofieldarchers@gmail.com  <FaExternalLinkAlt/> </a></div>
+                        </div>
+                        <div className="row">
+                            <div className="col-2 contact-icon"><FaFacebookF/></div>
+                            <div className="col-10"><a href="https://www.facebook.com/fresnoarchers" target="_blank">Facebook Page  <FaExternalLinkAlt/> </a></div>
                         </div>
                     </div>
                     
                     <div></div>
-                    <h1 className="title">
+                    <h1 className="subtitle">
                         Where to find us?
                     </h1>
                     <div className="map-container">

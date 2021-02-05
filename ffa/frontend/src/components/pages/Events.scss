@@ -30,7 +30,16 @@
   justify-content: center;
 }
 .safari-logo {
-  max-width: 100%;
-  max-height: 500px;
-  object-fit: contain;
+  max-width: 80%;
+  margin-bottom: -75px;
+}
+
+.event-table {
+  position: relative;
+  z-index: 9;
+}
+
+
+.icon {
+  margin-bottom: 4px;
 }

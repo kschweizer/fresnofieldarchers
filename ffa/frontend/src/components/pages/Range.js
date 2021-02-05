@@ -4,14 +4,14 @@ import './Range.scss';
 
 export class Range extends Component {
     state = {
-        rangeTarget: "Click on a target to see its information",
+        targetInput: 1,
     }
 
     IMAGE_URL = "/static/frontend/safarimap.png"
     AREAS_MAP = {
         name: "range-map",
         areas: [
-            { name: "1", shape: "circle", coords: [1340, 1950, 30 ], preFillColor: "rgba(212, 12, 12, 0.1)", fillColor: "rgba(212, 12, 12, 0.5)", strokeColor: "rgba(0, 0, 0, 1)", },
+            { name: "1", shape: "circle", coords: [1340, 1950, 30 ], preFillColor: "rgba(212, 12, 12, 0.8)", fillColor: "rgba(212, 12, 12, 0.5)", strokeColor: "rgba(0, 0, 0, 1)", },
             { name: "2", shape: "circle", coords: [1200, 1950, 30 ], preFillColor: "rgba(212, 12, 12, 0.1)", fillColor: "rgba(212, 12, 12, 0.5)", strokeColor: "rgba(0, 0, 0, 1)", },
             { name: "3", shape: "circle", coords: [1010, 1920, 30 ], preFillColor: "rgba(212, 12, 12, 0.1)", fillColor: "rgba(212, 12, 12, 0.5)", strokeColor: "rgba(0, 0, 0, 1)", },
             { name: "4", shape: "circle", coords: [980, 1805, 30 ], preFillColor: "rgba(212, 12, 12, 0.1)", fillColor: "rgba(212, 12, 12, 0.5)", strokeColor: "rgba(0, 0, 0, 1)", },
@@ -78,6 +78,20 @@ export class Range extends Component {
         this.setState({rangeTarget: area.name});
     };
 
+    selectTarget = (e) => {
+        var oldTarget = this.state.targetInput;
+        var newTarget = e.target.value;
+        if (newTarget < 1) {
+            newTarget = 1;
+        } else if (newTarget > 60) {
+            newTarget = 60;
+        }
+        this.setState({ [e.target.name]: e.target.value });
+        this.AREAS_MAP.areas[oldTarget - 1].preFillColor = "rgba(212, 12, 12, 0.1)";
+        this.AREAS_MAP.areas[e.target.value - 1].preFillColor = "rgba(212, 12, 12, 0.8)";
+    };
+
+
     render() {
         let windowWidth = window.innerWidth;
         if (windowWidth >= 992) {
@@ -87,10 +101,10 @@ export class Range extends Component {
         }
         return (
             <div className="range container-lg">
-                <div className="card bg-primary">
+                <div className="card bg-dark">
                     <div className="card-body">
                         <h5 className="card-title">
-                            Target: {this.state.rangeTarget}
+                            Select Target: <input type="number" name="targetInput" value={this.state.targetInput} min="1" max="60" onChange={this.selectTarget} />
                         </h5> 
 
                     </div>

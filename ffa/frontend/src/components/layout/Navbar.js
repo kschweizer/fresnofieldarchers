@@ -6,7 +6,7 @@ export class Navbar extends Component {
         return (
             <Fragment>
             {/* DEFAULT NAVBAR */}
-            <nav className="navbar navbar-expand-sm navbar-dark" >
+            <nav className="navbar navbar-expand-sm navbar-light" >
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
