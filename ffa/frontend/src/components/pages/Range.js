@@ -104,7 +104,7 @@ export class Range extends Component {
                 <div className="card bg-dark">
                     <div className="card-body">
                         <h5 className="card-title">
-                            Select Target: <input type="number" name="targetInput" value={this.state.targetInput} min="1" max="60" onChange={this.selectTarget} />
+                            Select Target: <input type="number" pattern="\d*" name="targetInput" value={this.state.targetInput} min="1" max="60" onChange={this.selectTarget} />
                         </h5> 
 
                     </div>
