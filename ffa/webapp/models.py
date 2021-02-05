@@ -26,3 +26,6 @@ class Image(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     image = models.ImageField(upload_to='img/', unique=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
+
+#class Event(models.Model):
+    #name = models.CharField(max_length=500, blank=False)

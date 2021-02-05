@@ -1,5 +1,9 @@
 
 // About.css
+.about-section {
+  font-family: Lato;
+}
+
 .about-header {
   position: relative;
   margin-top: 50px;
@@ -11,6 +15,13 @@
   text-align: center;
   color: black;
   background-color: rgb(255, 255, 255);
+}
+
+.subtitle {
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  background-color: black;
 }
 
 @media screen and (min-width: 601px) {
@@ -26,13 +37,13 @@
 }
 
 .general-info {
-  margin-top: 25px;
   justify-content: center;
   background-color: rgb(0, 0, 0, 0.6);
 }
 
 .contact {
   font-size: 1.3rem;
+  margin-bottom: 25px;
 }
 
 .contact-icon {
