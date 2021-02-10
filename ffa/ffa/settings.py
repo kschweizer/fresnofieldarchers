@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p9qe+2w#imnjnkzp-%b6sf$q9-k-lmhdaxxyuuz$ztogs$dxx$'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = os.getenv('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '2b59833ae3bd.ngrok.io']
+ALLOWED_HOSTS = ['157.245.174.129']
 
 
 # Application definition
@@ -84,9 +88,9 @@ WSGI_APPLICATION = 'ffa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ffa',
-        'USER': 'kyle',
-        'PASSWORD': 'password',
+        'NAME': 'fresnofieldarchers',
+        'USER': 'ffamanager',
+        'PASSWORD': os.getenv('DJANGO_DB_PASS'),
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -152,9 +156,9 @@ REST_FRAMEWORK = {
 # SET AS ENVIRONMENT KEYS
 
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('DJANGO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('DJANGO_AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
