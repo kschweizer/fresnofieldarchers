@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import  Photogallery from './photos/Photogallery';
+import Albumgallery from './photos/Albumgallery';
 import  Photoform  from './photos/Photoform';
 
 
@@ -21,16 +21,20 @@ export class Photos extends Component {
         const { edit } = this.state;
 
         const guestPage = (
-            <Photogallery/>
+            <div className="container-fluid">
+                <Albumgallery/>
+            </div>
         )
 
         const authPage = (
             <Fragment>
-                <button className="btn-success btn-sm" onClick={this.toggleEdit} >
-                    Upload Photos
-                </button>
-                { edit? <Photoform /> : null }
-                <Photogallery />
+                <div className="container-fluid">
+                    <button className="edit-button btn btn-success" onClick={this.toggleEdit} >
+                        Create New Photo Album
+                    </button>
+                    { edit? <Photoform /> : null }
+                    <Albumgallery />
+                </div>
             </Fragment>
         )
         return (

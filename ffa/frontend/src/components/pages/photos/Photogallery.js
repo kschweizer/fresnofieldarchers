@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getPhotos } from "../../../actions/photos";
+import { getAlbum } from "../../../actions/photos";
 import Masonry from 'react-masonry-css';
 import '../Photos.scss';
 
@@ -11,12 +11,11 @@ export class Photogallery extends Component {
         photos: PropTypes.array.isRequired
     };
 
-    componentDidMount() {
-        this.props.getPhotos();
-    }
+    
 
 
     render() {
+
         return (
                 <Masonry breakpointCols={3} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                     {this.props.photos.map(photo => ( 
@@ -29,8 +28,9 @@ export class Photogallery extends Component {
     }
 }
 
+
 const mapStateToProps = state => ({
     photos: state.photos.photos
 });
 
-export default connect(mapStateToProps, { getPhotos })(Photogallery);
+export default connect(mapStateToProps, { getAlbum })(Photogallery);

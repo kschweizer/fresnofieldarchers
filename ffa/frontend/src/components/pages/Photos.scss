@@ -1,7 +1,7 @@
 // Photoform.scss
 .photo-form {
     padding: 30px;
-    border: 2px solid tan;
+    background-color: black;
 }
 
 // Photogallery.scss
@@ -28,3 +28,54 @@
     max-width: 100%;
     padding: 3px;
 }
+
+.my-masonry-grid_column > div > a > img {
+    max-width: 100%;
+    padding: 3px;
+}
+.edit-button {
+    margin-bottom: 25px;
+}
+
+.grid {
+    max-width: 100%;
+}
+  
+/* clearfix */
+    .grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+  
+  /* ---- grid-item ---- */
+.grid-item {
+    width: 25%;
+    max-height: 100%;
+    float: left;
+    border: 2px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    border-radius: 5px;
+}
+
+.content {
+    img {
+        cursor: pointer;
+        max-width: 100%;
+        padding: 3px;
+    }
+}
+
+.album-thumbnail {
+    color: white;
+}
+
+.gallery-header {
+    position: relative;
+    margin-top: 50px;
+}
+
+
+
+
+

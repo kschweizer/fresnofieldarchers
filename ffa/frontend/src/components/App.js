@@ -23,14 +23,16 @@ import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
 import Account from './accounts/Account';
+import Photogallery from './pages/photos/Photogallery';
 
 // Redux Provider and store
 import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 
-// STYLES
+// STYLES and Frontend tools
 import '../styles/App.scss';
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 // Alert Options
 const alertOptions = {
@@ -46,10 +48,12 @@ class App extends Component {
 
     render() {
         return (
+            <SimpleReactLightbox>
             <Provider store={store}>
                 <AlertProvider template={AlertTemplate}
                 {...alertOptions}>
                 <Router>
+                    
                     <Fragment>      
                         <div className="wrapper">    
                             <Header />
@@ -61,6 +65,7 @@ class App extends Component {
                                 <Route exact path="/membership" component={Membership} />
                                 <Route exact path="/range" component={Range} />
                                 <Route exact path="/photos" component={Photos} />
+                                <Route path="/photos/albums" component={Photogallery} />
                                 <Route exact path="/register" component={Register} />
                                 <Route exact path="/login" component={Login} />
                                 <PrivateRoute exact path="/account" component={Account} />
@@ -69,9 +74,11 @@ class App extends Component {
                             <Footer />
                         </div>
                     </Fragment>
+                    
                 </Router>
                 </AlertProvider>
             </Provider>
+            </SimpleReactLightbox>
         )
      }
 

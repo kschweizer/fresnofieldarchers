@@ -13,46 +13,39 @@ export class Navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarToggler">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link">
+                            <a href="/" className="nav-link">
                                 <div className="nav-text">
                                     HOME
                                 </div>
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <Link to="/about-us" className="nav-link">
+                            <a href="/about-us" className="nav-link">
                                 <div className="nav-text">
                                     ABOUT
                                 </div>
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <Link to="/events" className="nav-link">
+                            <a href="/events" className="nav-link">
                                 <div className="nav-text">
                                     EVENTS
                                 </div>
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <Link to="/range" className="nav-link">
+                            <a href="/range" className="nav-link">
                                 <div className="nav-text">
                                     RANGE
                                 </div>
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <Link to="/membership" className="nav-link">
-                                <div className="nav-text">
-                                    MEMBERSHIP
-                                </div>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/photos" className="nav-link">
+                            <a href="/photos" className="nav-link">
                                 <div className="nav-text">
                                     PHOTOS
                                 </div>
-                            </Link>
+                            </a>
                         </li>                            
                     </ul>
                 </div>

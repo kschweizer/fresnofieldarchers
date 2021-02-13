@@ -13,6 +13,14 @@ export class About extends Component {
         return (
             <div className="about-section container-fluid">
                 <div className="about-header row">
+                    <div className="title col-sm-4">JOIN THE CLUB!</div>
+                </div>
+                <div className="container-lg member-info">
+                    <p>
+                        &emsp;&emsp;If you love archery, spending time outdoors with family and friends, or if you're just looking for a place to relax and unwind, then come check out what we have to offer. Please contact us by email or at the number below!
+                    </p>
+                </div>
+                <div className="about-header row">
                     <div className="title col-sm-4">
                         GENERAL INFORMATION
                     </div> 
@@ -76,8 +84,8 @@ export class About extends Component {
                             </p>
                         </div>
                         <div className="col-sm-5">
-                            <div className="photo-container">
-                                <img className="photo" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/ffa_history1.png" alt=""/>
+                            <div className="about-photo-container">
+                                <img className="about-photo" src="https://fresnofieldarchers.s3-us-west-1.amazonaws.com/images/ffa_history1.png" alt=""/>
                                 <p>
                                     Fresno Archers circa 1954
                                 </p>                      

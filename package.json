@@ -37,6 +37,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
+    "simple-react-lightbox": "^3.6.3",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
