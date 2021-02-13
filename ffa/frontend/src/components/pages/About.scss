@@ -59,12 +59,17 @@
   font-size: 1.2rem;
 }
 
-.photo-container {
+.about-photo-container {
   text-align: center;
   color: rgb(224, 224, 224);
 }
 
-.photo {
+.about-photo {
   max-width: 100%;
   border: 1px solid rgb(204, 204, 204);
+}
+
+.member-info {
+  font-size: 1.2rem;
+  background-color: rgb(0, 0, 0, 0.6);
 }

@@ -3,6 +3,7 @@ export const DELETE_BLOGPOST = "DELETE_BLOGPOST";
 export const ADD_BLOGPOST = "ADD_BLOGPOST";
 export const GET_PHOTOS = "GET_PHOTOS";
 export const ADD_PHOTO = "ADD_PHOTO";
+export const DELETE_PHOTO = "DELETE_PHOTO";
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const USER_LOADING = "USER_LOADING";
@@ -13,3 +14,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
+export const ADD_ALBUM = "ADD_ALBUM";
+export const GET_ALBUMS = "GET_ALBUMS";
+export const GET_ALBUM = "GET_ALBUM";
+

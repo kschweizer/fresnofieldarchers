@@ -3,6 +3,7 @@ from rest_framework.permissions import BasePermission, IsAdminUser, SAFE_METHODS
 from django.http import HttpResponse
 from webapp.models import Blogpost, Image, Album
 from knox.auth import TokenAuthentication
+import json
 
 from .serializers import BlogpostSerializer, ImageSerializer, AlbumSerializer
 
@@ -20,6 +21,7 @@ class BlogpostViewSet(viewsets.ModelViewSet):
 
 # Album Viewset
 class AlbumViewSet(viewsets.ModelViewSet):
+    pagination_class = None
     queryset = Album.objects.all()
     authentication_classes = (TokenAuthentication, )
     permission_classes = [
@@ -27,19 +29,30 @@ class AlbumViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = AlbumSerializer
 
+    def retrieve(self, request, *args, **kwargs):
+        album = self.get_object()
+        images = album.image_set.all()
+        serializer = ImageSerializer(images, many=True)
+        return HttpResponse(json.dumps(serializer.data), content_type="application/json", status=200)
+
+
+
+
 
 # Image Viewset
 class ImageViewSet(viewsets.ModelViewSet):
     pagination_class = None
     queryset = Image.objects.all()
+    authentication_classes= (TokenAuthentication, )
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
     serializer_class = ImageSerializer
 
-    def post(self, request):
+    def create(self, request):
         post_data = request.data
         image = post_data['image']
-        album = post_data['album']
-        Image.objects.create(image=image, album=album)      
+        album_id = post_data['album']
+        album = Album.objects.get(id=album_id)
+        Image.objects.create(image=image, album=album)
         return HttpResponse({'message': 'Image Uploaded'}, status=200)

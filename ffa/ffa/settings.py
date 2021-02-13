@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = ['157.245.174.129']
+ALLOWED_HOSTS = ['157.245.174.129', 'localhost']
 
 
 # Application definition
@@ -88,8 +88,8 @@ WSGI_APPLICATION = 'ffa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'fresnofieldarchers',
-        'USER': 'ffamanager',
+        'NAME': os.getenv('DJANGO_DB_NAME'),
+        'USER': os.getenv('DJANGO_DB_USER'),
         'PASSWORD': os.getenv('DJANGO_DB_PASS'),
         'HOST': 'localhost',
         'PORT': '',
@@ -158,7 +158,8 @@ REST_FRAMEWORK = {
 
 AWS_ACCESS_KEY_ID = os.getenv('DJANGO_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('DJANGO_AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('DJANGO_AWS_STORAGE_BUCKET_NAME')
+AWS_STORAGE_BUCKET_NAME = os.getenv('DJANGO_AWS_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = False
 
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None

@@ -19,7 +19,7 @@ export class Header extends Component {
             <div className="container-fluid">
                 <div className="row media-bar">
                     <ul className="social-icons">
-                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '70%', height: '70%', marginBottom: '2px' }}}>
+                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '50%', height: '50%', marginBottom: '2px' }}}>
                         <li>
                             <a className="facebook" href="https://www.facebook.com/fresnoarchers/" target="_blank">
                                 <FaFacebookF />

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createMessage } from './messages';
 
-import { GET_PHOTOS, ADD_PHOTO } from './types';
+import { GET_PHOTOS, ADD_PHOTO, ADD_ALBUM, GET_ALBUMS, GET_ALBUM } from './types';
 import { tokenConfig } from './auth';
 
 // GET PHOTOS
@@ -28,4 +28,52 @@ export const addPhoto = (photo, current, total)=> (dispatch, getState) => {
                 });
             })
             .catch(err => console.log(err));
+};
+
+// DELETE PHOTO
+export const deletePhoto = (id)=> (dispatch, getState) => {
+    axios
+        .delete(`/api/webapp/photos/${id}`, tokenConfig(getState))
+            .then(res => {
+                dispatch({
+                    type: DELETE_PHOTO,
+                    payload: res.data
+                });
+            })
+            .catch(err => console.log(err));
+};
+
+// CREATE ALBUM
+export const addAlbum = (album)=> (dispatch, getState) => {
+    axios
+        .post('/api/webapp/albums/', album, tokenConfig(getState))
+            .then(res => {
+                dispatch({
+                    type: ADD_ALBUM,
+                    payload: res.data
+                });
+            })
+            .catch(err => console.log(err));
+};
+
+export const getAlbums = ()=> dispatch => {
+    axios
+        .get(`/api/webapp/albums/`)
+        .then(res => {
+            dispatch({
+                type: GET_ALBUMS,
+                payload: res.data
+            });
+        }).catch(err => console.log(err));
+};
+
+export const getAlbum = (id)=> dispatch => {
+    axios
+        .get(`/api/webapp/albums/${id}`)
+        .then(res => {
+            dispatch({
+                type: GET_ALBUM,
+                payload: res.data
+            });
+        }).catch(err => console.log(err));
 };
