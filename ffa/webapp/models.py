@@ -22,7 +22,7 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='dev/img/', unique=True)
+    image = models.ImageField(upload_to='img/', unique=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
