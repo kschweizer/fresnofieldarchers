@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAlbum } from "../../../actions/photos";
-import Masonry from 'react-masonry-css';
 import '../Photos.scss';
 
 export class Photogallery extends Component {
