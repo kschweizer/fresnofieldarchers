@@ -22,7 +22,7 @@ class BlogpostViewSet(viewsets.ModelViewSet):
 # Album Viewset
 class AlbumViewSet(viewsets.ModelViewSet):
     pagination_class = None
-    queryset = Album.objects.all()
+    queryset = Album.objects.all().order_by('created_at')
     authentication_classes = (TokenAuthentication, )
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly

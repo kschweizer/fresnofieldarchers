@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { getAlbum } from "../../../actions/photos";
 import { SRLWrapper } from "simple-react-lightbox";
-import Masonry from 'react-masonry-css';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import '../Photos.scss';

@@ -19,6 +19,7 @@ class Album(models.Model):
     title = models.CharField(unique=True, max_length=200)
     thumbnail = models.CharField(max_length=64, blank=True)
     description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class Image(models.Model):
     image = models.ImageField(upload_to='dev/img/', unique=True)
