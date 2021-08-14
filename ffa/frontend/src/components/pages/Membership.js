@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import './Membership.scss';
 
 export class Membership extends Component {
     render() {

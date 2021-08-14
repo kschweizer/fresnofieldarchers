@@ -53,17 +53,20 @@
     width: 25%;
     max-height: 100%;
     float: left;
-    border: 2px solid #333;
-    border-color: hsla(0, 0%, 0%, 0.5);
-    border-radius: 5px;
 }
 
 .content {
+    min-height: 500px;
     img {
         cursor: pointer;
         max-width: 100%;
         padding: 3px;
     }
+}
+
+
+.album {
+    min-height: 800px;
 }
 
 .album-thumbnail {
@@ -73,6 +76,13 @@
 .gallery-header {
     position: relative;
     margin-top: 50px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #fff;
+}
+
+.gallery-title {
+    font-family: Lato;
+    font-size: 32px;
 }
 
 

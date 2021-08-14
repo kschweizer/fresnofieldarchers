@@ -20,7 +20,6 @@ function Album(props) {
     useEffect(() => {
         if (props.album_id) {
             props.getAlbum(props.album_id);
-            console.log(location);
         }
     }, [location]); // Only use if albums changes
 
@@ -30,12 +29,18 @@ function Album(props) {
                 <SRLWrapper options={options}>
                     <div className="grid content" data-masonry='{ "itemSelector": ".grid-item" }'>
                         <div className="grid-sizer"></div>
-                        {props.album ? (props.album.map(photo => (
+                        {props.album ? (props.album.photos.map(photo => (
                             <div key={photo.id} className="photo grid-item">
-                                <img src={photo.image} />
+                                <a href={photo.image}>
+                                    <img src={photo.thumbnail} />
+                                </a>
                             </div>
                         ))) : (
-                            null
+                            <div key='placeholder' className="photo grid-item">
+                                <a href='/static/placeholder.jpg'>
+                                    <img src='/static/placeholder.jpg' />
+                                </a>
+                            </div>
                         )}
                     </div>
                 </SRLWrapper>

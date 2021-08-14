@@ -27,9 +27,12 @@ urlpatterns = [
     path('login', include('frontend.urls')),
     path('register', include('frontend.urls')),
     path('logout', include('frontend.urls')),
+    path('editor', include('frontend.urls')),
+    re_path(r'editor/.*', include('frontend.urls')),
     re_path(r'^photos/albums', include('frontend.urls')),
     path('account', include('frontend.urls')),
     path ('', include('frontend.urls')),
     path('', include('webapp.urls')),
-    path('', include('accounts.urls'))
+    path('', include('accounts.urls')),
+    path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

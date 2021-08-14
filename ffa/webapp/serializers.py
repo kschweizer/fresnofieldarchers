@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from webapp.models import Blogpost, Image, Album
+from webapp.models import Blogpost, Image, Album, Event
 
 # Blogpost Serializer
 class BlogpostSerializer(serializers.ModelSerializer):
@@ -16,4 +16,9 @@ class ImageSerializer(serializers.ModelSerializer):
 class AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Album
+        fields = '__all__'
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
         fields = '__all__'

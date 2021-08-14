@@ -13,39 +13,32 @@ export class Navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarToggler">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item">
-                            <a href="/" className="nav-link">
+                            <Link to="/" className="nav-link">
                                 <div className="nav-text">
                                     HOME
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/about-us" className="nav-link">
+                            <Link to="/about-us" className="nav-link">
                                 <div className="nav-text">
                                     ABOUT
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/events" className="nav-link">
+                            <Link to="/events" className="nav-link">
                                 <div className="nav-text">
                                     EVENTS
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/range" className="nav-link">
-                                <div className="nav-text">
-                                    RANGE
-                                </div>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="/photos" className="nav-link">
+                            <Link to="/photos" className="nav-link">
                                 <div className="nav-text">
                                     PHOTOS
                                 </div>
-                            </a>
+                            </Link>
                         </li>                            
                     </ul>
                 </div>

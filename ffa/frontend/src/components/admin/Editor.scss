@@ -1,0 +1,28 @@
+.editor {
+    min-height: 650px;
+    background-color: #0000;
+}
+
+.editor {
+    .card {
+       padding: 2rem; 
+    }
+}
+
+.editor-header {
+    font-size: 48px;
+    text-align: center;
+    color: rgb(212, 12, 12);
+}
+
+.editor-bar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 10px;
+    background-color: rgb(36, 36, 36);
+}
+
+.editor-link {
+    font-size: 24px;
+    text-align: center;
+}

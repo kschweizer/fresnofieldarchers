@@ -11,9 +11,9 @@ export class About extends Component {
             var width = "350";
         }
         return (
-            <div className="about-section container-fluid">
+            <div className="about-section container-lg">
                 <div className="about-header row">
-                    <div className="title col-sm-4">JOIN THE CLUB!</div>
+                    <h2>Interested in joining?</h2>
                 </div>
                 <div className="container-lg member-info">
                     <p>
@@ -21,13 +21,11 @@ export class About extends Component {
                     </p>
                 </div>
                 <div className="about-header row">
-                    <div className="title col-sm-4">
-                        GENERAL INFORMATION
-                    </div> 
+                    <h2>Club information</h2>
                 </div>
                 <div className="general-info container-lg">
                     <h1 className="subtitle">
-                        Where to reach us?
+                        Contact Information
                     </h1>
                     <div className="contact">
                         <div className="row">
@@ -46,7 +44,7 @@ export class About extends Component {
                     
                     <div></div>
                     <h1 className="subtitle">
-                        Where to find us?
+                        Range Location
                     </h1>
                     <div className="map-container">
                         <iframe width={width} height="450" frameBorder="0" 
@@ -56,11 +54,9 @@ export class About extends Component {
                     </div>
                 </div>
                 <div className="about-header row">
-                    <div className="title col-sm-4">
-                        CLUB HISTORY
-                    </div> 
+                    <h2>Club History</h2>
                 </div>
-                <div className="container-lg history">
+                <div className="container-lg">
                     <div className="row">
                         <div className="col-sm-7 about-text">
                             <p>

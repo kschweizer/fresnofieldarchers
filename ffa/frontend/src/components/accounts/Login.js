@@ -32,7 +32,7 @@ export class Login extends Component {
             <div className="container-sm">
                 <div className="col-md-6 m-auto">
                     <div className="card card-body bg-dark mt-5">
-                        <h2 className="text-center">Login</h2>
+                        <h2 className="text-center">Log in</h2>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <label>Username</label>
@@ -62,9 +62,6 @@ export class Login extends Component {
                                     Login
                                 </button>
                             </div>
-                            <p>
-                                Don't have an account? <Link to="/register">Register</Link>
-                            </p>
                         </form>
                     </div>
                 </div>

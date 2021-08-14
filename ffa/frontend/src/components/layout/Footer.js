@@ -35,23 +35,23 @@ export class Footer extends Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-8 col-sm-6 col-xs-12">
-                    <p className="copyright-text"> &copy; 2020 Kyle Schweizer </p>
-                  </div>
-                  <div className="col-md-4 col-sm-6 col-xs-12">
                     <ul className="social-icons">
-                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '80%', height: '80%', marginBottom: '2px' }}}>
+                      <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '80%', height: '80%', marginBottom: '2px' }}}>
                         <li>
                             <a className="facebook" href="https://www.facebook.com/fresnoarchers/" target="_blank">
                                 <FaFacebook />
                             </a>
                         </li>
                         <li>
-                            <a className="email" href="mailto: fresnofieldarchers@gmail.com" target="_blank">
-                                <FaEnvelope />
-                            </a>                        
-                        </li>
+                              <a className="email" href="mailto: fresnofieldarchers@gmail.com" target="_blank">
+                                  <FaEnvelope />
+                              </a>                        
+                          </li>
                         </IconContext.Provider> 
-                    </ul>
+                      </ul>
+                  </div>
+                  <div className="col-md-4 col-sm-6 col-xs-12">
+                    <span></span>
                   </div>
                 </div>
               </div>
