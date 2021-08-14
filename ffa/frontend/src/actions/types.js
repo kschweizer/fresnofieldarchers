@@ -17,4 +17,6 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const ADD_ALBUM = "ADD_ALBUM";
 export const GET_ALBUMS = "GET_ALBUMS";
 export const GET_ALBUM = "GET_ALBUM";
+export const DELETE_ALBUM = "DELETE_ALBUM";
+export const GET_EVENTS = "GET_EVENTS";
 

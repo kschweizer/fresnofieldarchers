@@ -18,10 +18,25 @@ export class Account extends Component {
         let { username, email } = (user ? user : { username: null, email: null })
 
         return (
-            <div>
-                { username && email ? <div> {username}, {email} </div> : null }
-                <div className="button btn btn-danger" onClick={this.logout}>
-                    LOGOUT
+            <div className="container-lg" style={{ minHeight : '600px' }}>
+                <div className="card" style={{ marginTop : '25px' }}>
+                    { username && email ? (
+                        <div className="card-body">
+                            <div className="card-title">
+                                Profile
+                            </div> 
+                            <h5>Username: {username}</h5>
+                            <h5>Email Address: {email}</h5>
+                        </div>
+                    ) 
+                    : (
+                        null
+                    )}
+                    <div style={{ marginLeft : 'auto', marginRight : 'auto' }}>
+                        <div className="button btn btn-info" onClick={this.logout}>
+                            LOGOUT
+                        </div>
+                    </div>
                 </div>
             </div>
             

@@ -17,13 +17,12 @@ function Albumgallery(props) {
 
     useEffect(() => {
         props.getAlbums();
-        console.log(location);
     }, [location]); // Only use if albums changes
 
     return (
-        <div>
+        <div className="container-lg">
             <div className="gallery-header row">
-                <div className="title col-sm-4">
+                <div className="gallery-title">
                     Photo Albums
                 </div> 
             </div>

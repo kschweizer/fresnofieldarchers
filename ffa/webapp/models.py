@@ -2,7 +2,6 @@ import calendar
 
 from django.db import models
 from django.contrib.auth.models import User
-import uuid
 
 # Create your models here.
 
@@ -23,8 +22,87 @@ class Album(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to='img/', unique=True)
+    thumbnail = models.ImageField(upload_to='img/', blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-#class Event(models.Model):
-    #name = models.CharField(max_length=500, blank=False)
+    def create_thumbnail(self):
+        if not self.image:
+            return
+        import os 
+        from PIL import Image as PIL_Image
+        from io import BytesIO
+        from django.core.files.uploadedfile import SimpleUploadedFile
+
+        THUMB_SIZE = (250, 250)
+        CONTENT_TYPE = self.image.file.content_type
+
+        if CONTENT_TYPE == 'image/jpeg':
+            PIL_TYPE = 'jpeg'
+            FILE_EXTENSION = 'jpg'
+        elif CONTENT_TYPE == 'image/png':
+            PIL_TYPE = 'png'
+            FILE_EXTENSION = 'png'
+
+        image = PIL_Image.open(BytesIO(self.image.read()))
+        image.thumbnail(THUMB_SIZE, PIL_Image.ANTIALIAS)
+
+        temp_handle = BytesIO()
+        image.save(temp_handle, PIL_TYPE)
+        temp_handle.seek(0)
+
+        suf = SimpleUploadedFile(os.path.split(self.image.name)[-1], temp_handle.read(), content_type=CONTENT_TYPE)
+        self.thumbnail.save('{}_thumbnail.{}'.format(os.path.splitext(suf.name)[0], FILE_EXTENSION), suf, save=False)
+    
+    def save(self, *args, **kwargs):
+        self.create_thumbnail()
+        force_update = False
+        if self.id:
+            force_update = True
+        super(Image, self).save(force_update=force_update)
+
+class Event(models.Model):
+    name = models.CharField(max_length=500, blank=False)
+    description = models.TextField(blank=True)
+    flyer = models.ImageField(upload_to='events/flyers/', blank=True, null=True)
+    flyer_thumbnail = models.ImageField(upload_to='events/flyers/', blank=True, null=True)
+    date = models.TextField(blank=True)
+    scores = models.FileField(upload_to='events/scores/', blank=True, null=True)
+
+    def create_thumbnail(self):
+        if not self.flyer:
+            return
+        
+        import os
+        from PIL import Image as PIL_Image
+        from io import BytesIO
+        from django.core.files.uploadedfile import SimpleUploadedFile
+        
+        THUMB_SIZE = (250, 250)
+
+        CONTENT_TYPE = self.flyer.file.content_type
+
+        if CONTENT_TYPE == 'image/jpeg':
+            PIL_TYPE = 'jpeg'
+            FILE_EXTENSION = 'jpg'
+        elif CONTENT_TYPE == 'image/png':
+            PIL_TYPE = 'png'
+            FILE_EXTENSION = 'png'
+
+        image = PIL_Image.open(BytesIO(self.flyer.read()))
+
+        image.thumbnail(THUMB_SIZE, PIL_Image.ANTIALIAS)
+
+        temp_handle = BytesIO()
+        image.save(temp_handle, PIL_TYPE)
+        temp_handle.seek(0)
+
+        suf = SimpleUploadedFile(os.path.split(self.flyer.name)[-1], temp_handle.read(), content_type=CONTENT_TYPE)
+        self.flyer_thumbnail.save('{}_thumbnail.{}'.format(os.path.splitext(suf.name)[0], FILE_EXTENSION), suf, save=False)
+
+    def save(self, *args, **kwargs):
+        self.create_thumbnail()
+        force_update = False
+        if self.id:
+            force_update = True
+        super(Event, self).save(force_update=force_update)

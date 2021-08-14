@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addBlogpost } from '../../actions/blogposts';
+import { addBlogpost } from '../../../actions/blogposts';
 
 
-export class Blogform extends Component {
+export class BlogForm extends Component {
     state = {
         subject: "",
         message: ""
@@ -20,7 +20,6 @@ export class Blogform extends Component {
         if (e.keyCode== 9) {
             e.preventDefault();
         }
-
     }
 
     onSubmit = e => {
@@ -35,7 +34,7 @@ export class Blogform extends Component {
         return (
             <div id="blogform">
                 <div className="card card-body bg-secondary mt-4 mb-4">
-                    <h2>Add Newspost</h2>
+                    <h2>Create New Post</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Subject</label>
@@ -68,4 +67,4 @@ export class Blogform extends Component {
     }
 }
 
-export default connect(null, {addBlogpost})(Blogform);
+export default connect(null, {addBlogpost})(BlogForm);

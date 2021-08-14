@@ -11,6 +11,7 @@ import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 // Main components
+import Editor from './admin/Editor';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Home from './pages/Home';
@@ -21,9 +22,7 @@ import Range from './pages/Range';
 import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
-import Register from './accounts/Register';
 import Account from './accounts/Account';
-import Photogallery from './pages/photos/Photogallery';
 
 // Redux Provider and store
 import { Provider } from 'react-redux';
@@ -65,11 +64,9 @@ class App extends Component {
                                 <Route exact path="/membership" component={Membership} />
                                 <Route exact path="/range" component={Range} />
                                 <Route exact path="/photos" component={Photos} />
-                                <Route path="/photos/albums" component={Photogallery} />
-                                <Route exact path="/register" component={Register} />
                                 <Route exact path="/login" component={Login} />
                                 <PrivateRoute exact path="/account" component={Account} />
-                                
+                                <PrivateRoute path="/editor" component={Editor} />
                             </Switch>                           
                             <Footer />
                         </div>
