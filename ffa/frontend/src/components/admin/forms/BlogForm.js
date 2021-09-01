@@ -33,8 +33,8 @@ export class BlogForm extends Component {
         const { subject, message } = this.state;
         return (
             <div id="blogform">
-                <div className="card card-body bg-secondary mt-4 mb-4">
-                    <h2>Create New Post</h2>
+                <div className="card card-body bg-danger mt-4 mb-4">
+                    <h2>Create New Blogpost</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Subject</label>
@@ -58,7 +58,7 @@ export class BlogForm extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-success">Submit</button>
                         </div>
                     </form>                
                 </div>

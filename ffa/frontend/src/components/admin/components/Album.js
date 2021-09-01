@@ -33,19 +33,21 @@ function Album(props) {
         if (props.album_id) {
             props.getAlbum(props.album_id);
             setLoading(false);
+            setSelection(new Set());
         }
     }, [location, props.refresh]); // Only use if albums changes
 
     const accept = () => {
+        toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+        setVisible(false);
         for (let img of selection) {
             props.deletePhoto(img);
         }
-        setSelection(new Set());
-        toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-    };
+        setSelection(new Set());};
 
     const reject = () => {
         toast.current.show({ severity: 'info', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+        setVisible(false);
     };
 
     const customUpload = (e) => {
@@ -103,14 +105,11 @@ function Album(props) {
                         <div className="grid content" data-masonry='{ "itemSelector": ".grid-item" }'>
                             <div className="grid-sizer"></div>
                             {props.album ? (props.album.photos.map(photo => (
-                                <div className="grid-item"> 
-                                    <div key={photo.id} className="photo">
-                                        <a href={photo.image}>
-                                            <img src={photo.thumbnail} />
-                                        </a>
-                                        
-                                    </div>
-                                    <Button className={selection.has(photo.id) ? "p-button-danger" : "p-button-success"} onClick={toggleSelection.bind(this, photo.id)} icon={selection.has(photo.id) ? "pi pi-minus" : "pi pi-plus"}/>
+                                <div key={photo.id} className="photo grid-item">
+                                    <a href={photo.image}>
+                                        <img src={photo.thumbnail} />
+                                    </a>
+                                    <Button className={selection.has(photo.id) ? "p-button-danger" : "p-button-success"} style={{position : 'absolute', left : '0px', zIndex : '10'}} onClick={toggleSelection.bind(this, photo.id)} icon={selection.has(photo.id) ? "pi pi-minus" : "pi pi-plus"}/>
                                 </div>
                             ))) : (
                                 null

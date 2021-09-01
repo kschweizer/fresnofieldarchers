@@ -13,6 +13,7 @@ function useQuery() {
 
 function GalleryControls(props) {
     const [visible, setVisible] = useState(false);
+    const [selection, setSelection] = useState(null);
     const toast = useRef(null);
     let query = useQuery();
     
@@ -38,7 +39,6 @@ function GalleryControls(props) {
 
     useEffect(() => {
         props.getAlbums();
-        console.log(props.refresh);
     }, [props.refresh]); // Only use if albums changes
 
     return (
@@ -56,26 +56,31 @@ function GalleryControls(props) {
                         <button className="btn btn-primary">Back to Album List</button>
                     </Link>
                     ) : (
-                        <div className="row content">
+                        <table className="table">
+                        <tbody>
                         {props.albums ? (
                             props.albums.map(album => ( 
-                                <div key={album.id} className="photo col-lg-3 col-md-4 col-6">
-                                    <Link to={`/editor/photos?album=${album.id}`} >
-                                        <div className="album-thumbnail">
-                                            <h4> {album.title} </h4>
-                                            <img src={album.thumbnail ? album.thumbnail : "/static/placeholder.jpg"} /> 
-                                        </div>
-                                    </Link>
-                                    <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?"
-                                        header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, album.id)} reject={reject} />
-                                    <Button onClick={() => setVisible(true)} icon="pi pi-times" label="Delete" />
-                                </div>
+                                <tr key={album.id} className="photo col-lg-3 col-md-4 col-6">
+                                    <td>
+                                        <Link to={`/editor/photos?album=${album.id}`} >
+                                            <div className="album-thumbnail">
+                                                <h4> {album.title} </h4>
+                                            </div>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <ConfirmDialog key={`${album.id}`} visible={visible && selection == album.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to proceed?"
+                                            header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, album.id)} reject={reject} />
+                                        <Button onClick={() => {setSelection(album.id); setVisible(true);}} icon="pi pi-times" label="Delete" />
+                                    </td>
+                                </tr>
                             ))
                         ) : (
                             null
                         )
                         }
-                        </div>
+                        </tbody>
+                        </table>
                 )}
                 
                 <Album album_id={query.get("album")}/>
