@@ -33,23 +33,26 @@ function Albumgallery(props) {
                         <button className="btn btn-success">Go back to Album List</button>
                     </Link>
                     ) : (
-                        <div className="row content">
+                        <table className="table">
+                        <tbody>
                         {props.albums ? (
                             props.albums.map(album => ( 
-                                <div key={album.id} className="photo col-lg-3 col-md-4 col-6">
-                                    <Link to={`/photos?album=${album.id}`} >
-                                        <div className="album-thumbnail">
-                                            <h4> {album.title} </h4>
-                                            <img src={album.thumbnail ? album.thumbnail : "/static/placeholder.jpg"} /> 
-                                        </div>
-                                    </Link>
-                                </div>
+                                <tr key={album.id} className="photo col-lg-3 col-md-4 col-6">
+                                    <td>
+                                        <Link to={`/photos?album=${album.id}`} >
+                                            <div className="album-thumbnail">
+                                                <h4> {album.title} </h4>
+                                            </div>
+                                        </Link>
+                                    </td>
+                                </tr>
                             ))
                         ) : (
                             null
                         )
                         }
-                        </div>
+                        </tbody>
+                        </table>
                 )}
                 
                 <Album album_id={query.get("album")}/>

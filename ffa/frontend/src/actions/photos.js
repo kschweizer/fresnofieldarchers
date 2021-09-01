@@ -17,7 +17,7 @@ export const getPhotos = ()=> dispatch => {
 };
 
 // ADD PHOTO
-export const addPhoto = (photo, refresh = false)=> (dispatch, getState) => {
+export const addPhoto = (photo)=> (dispatch, getState) => {
     axios
         .post('/api/webapp/photos/', photo, tokenConfig(getState))
             .then(res => {
