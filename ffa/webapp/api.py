@@ -25,9 +25,7 @@ class AlbumViewSet(viewsets.ModelViewSet):
     pagination_class = None
     queryset = Album.objects.all().order_by('-created_at')
     authentication_classes = (TokenAuthentication, )
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [IsAdminUser | ReadOnly]
     serializer_class = AlbumSerializer
 
     def retrieve(self, request, *args, **kwargs):
@@ -50,9 +48,7 @@ class ImageViewSet(viewsets.ModelViewSet):
     pagination_class = None
     queryset = Image.objects.all()
     authentication_classes= (TokenAuthentication, )
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [IsAdminUser | ReadOnly]
     serializer_class = ImageSerializer
 
     def create(self, request):
@@ -63,20 +59,11 @@ class ImageViewSet(viewsets.ModelViewSet):
         Image.objects.create(image=image, album=album)
         return HttpResponse(str(post_data), status=200)
 
-    def destroy(self, request, *args, **kwargs):
-        image = self.get_object()
-        image.image.delete(save=False)
-        image.thumbnail.delete(save=False)
-        image.delete()
-        return HttpResponse({'message' : 'image deleted'}, 200)
-
 class EventViewSet(viewsets.ModelViewSet):
     pagination_class = None
-    queryset = Event.objects.all().order_by('date')
+    queryset = Event.objects.all().order_by('-created_at')
     authentication_classes= (TokenAuthentication, )
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
+    permission_classes = [IsAdminUser | ReadOnly]
     serializer_class = EventSerializer
 
     def create(self, request):
@@ -85,17 +72,11 @@ class EventViewSet(viewsets.ModelViewSet):
         description = None if not ('description' in post_data) else post_data['description']
         date = None if not ('date' in post_data) else post_data['date']
         flyer = None if not ('flyer' in post_data) else post_data['flyer']
-        Event.objects.create(name=name, description=description, flyer=flyer, date=date)
-        return HttpResponse({'message': 'Event Created'}, status=200)
+        event = Event.objects.create(name=name, description=description, flyer=flyer, date=date)
+        event_data = json.loads(serializers.serialize('json', [event]))[0]
+        return HttpResponse(json.dumps(event_data), content_type="application/json", status=200)
+    
+    
 
-
-class EventScoreViewset(viewsets.ModelViewSet):
-    pagination_class = None
-    queryset = Event.objects.all()
-    authentication_classes = (TokenAuthentication, )
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
-    serializer_class = EventSerializer
 
     

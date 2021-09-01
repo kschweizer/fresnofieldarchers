@@ -29,23 +29,18 @@ function AlbumForm(props) {
     const onSubmit = e => {
         e.preventDefault();
         const album = { title, description };
-        // Individual photo upload continues in componentDidUpdate()
         props.addAlbum(album);
     };
         
     return (
         <div>
-            <div className="gallery-header row">
-                <h3 className="gallery-title">Create New Photo Album</h3>                
-            </div>
-            <div className="card">
-                <h3>Album Title</h3>
+            <div className="card bg-danger">
+                <h3 style={{ borderBottom : '2px solid #fff' }}>Create New Photo Album</h3>
                 <div>
-                    <InputText type='text' id="album-title" placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <InputText type='text' id="album-title" placeholder='Album Title*' value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
-                <h3>Album Description</h3>
                 <div>                    
-                    <InputTextarea style={{resize : 'auto'}} value={description} onChange={(e) => setDescription(e.target.value)} rows={5} cols={30} />
+                    <InputTextarea style={{resize : 'auto'}} placeholder='Album Description' value={description} onChange={(e) => setDescription(e.target.value)} rows={5} cols={30} />
                 </div>
             </div>
             <button onClick={onSubmit}> SUBMIT </button>

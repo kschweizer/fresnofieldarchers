@@ -12,17 +12,24 @@ function Editor() {
             <div className="editor-header">
                 Site Editor
             </div>
-            <div className="row editor-bar">
-                <div className="col editor-link">
-                    <Link to="/editor">HOME</Link>
+            <nav className="navbar navbar-expand-sm navbar-dark editor-bar">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler2" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarToggler2">
+                    <ul className="navbar-nav mx-auto">
+                        <li className="nav-item">
+                            <Link to="/editor" className="nav-link"><h5>HOME</h5></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/editor/events" className="nav-link"><h5>EVENTS</h5></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/editor/photos" className="nav-link"><h5>PHOTOS</h5></Link>
+                        </li>
+                    </ul>
                 </div>
-                <div className="col editor-link">
-                    <Link to="/editor/events">EVENTS</Link>
-                </div>
-                <div className="col editor-link">
-                    <Link to="/editor/photos">PHOTOS</Link>
-                </div>
-            </div>
+            </nav>
             <Switch>
                 <Route exact path="/editor" component={Blogposts}/>
                 <Route exact path="/editor/events" component={EventForm}/>

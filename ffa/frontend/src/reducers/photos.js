@@ -19,7 +19,8 @@ export default function(state = initialState, action) {
             };
         case ADD_ALBUM:
             return {
-                ...state
+                ...state,
+                refresh: !state.refresh
             }
         case GET_ALBUMS:
             return {

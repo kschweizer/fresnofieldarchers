@@ -8,7 +8,7 @@ export class Footer extends Component {
             <div className="site-footer">
               <div className="container">
                 <div className="row">
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-9">
                     <h6>Contact</h6>
                     <ul className="footer-links">
                         <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
@@ -17,11 +17,7 @@ export class Footer extends Component {
                         </IconContext.Provider>
                     </ul>
                   </div>
-        
-                  <div className="col-xs-6 col-md-3">
-                    
-                  </div>
-        
+
                   <div className="col-xs-6 col-md-3">
                     <h6>Quick Links</h6>
                     <ul className="footer-links">
@@ -34,7 +30,7 @@ export class Footer extends Component {
               </div>
               <div className="container">
                 <div className="row">
-                  <div className="col-md-8 col-sm-6 col-xs-12">
+                  <div className="col-sm-12 col-md-9">
                     <ul className="social-icons">
                       <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '80%', height: '80%', marginBottom: '2px' }}}>
                         <li>
@@ -50,8 +46,8 @@ export class Footer extends Component {
                         </IconContext.Provider> 
                       </ul>
                   </div>
-                  <div className="col-md-4 col-sm-6 col-xs-12">
-                    <span></span>
+                  <div className="col-sm-12 col-md-3">
+                    <a href="/login">Admin Login</a>
                   </div>
                 </div>
               </div>

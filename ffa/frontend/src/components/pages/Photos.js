@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Albumgallery from './photos/Albumgallery';
-import  Photoform  from './photos/Photoform';
 
 
 export class Photos extends Component {

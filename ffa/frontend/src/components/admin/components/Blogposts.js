@@ -21,7 +21,7 @@ export class Blogposts extends Component {
             <div className="blog-container">
                 <BlogForm />
                 { this.props.blogposts.map(blogpost => (
-                    <article className="blogpost">
+                    <article key={blogpost.id} className="blogpost">
                         <h2 className="blog-title">{blogpost.subject}</h2>
                         <h5 className="blog-date">{blogpost.date}</h5>
                         <p className="blog-body">{blogpost.message}</p>

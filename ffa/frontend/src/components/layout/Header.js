@@ -13,16 +13,20 @@ export class Header extends Component {
         logout: PropTypes.func.isRequired
     }
 
+    logout = () => {
+        this.props.logout();
+    }
+
     render() {
         const { isAuthenticated, user } = this.props.auth;
         const authLinks = (
             <div className="container-fluid">
                 <div className="row media-bar">
-                    <Link to="/account" className="user-link">
-                        <h5>Profile</h5>
+                    <Link to="#" onClick={this.logout} className="user-link">
+                        <h5>Logout</h5>
                     </Link>
                     <div className="editor-link">
-                        <Link to="/editor"><i className="pi pi-user-edit" style={{ marginLeft : '10px', marginTop : '10px', fontSize : '1.2em' }}></i></Link>
+                        <a href="/editor"><i className="pi pi-user-edit" style={{ marginLeft : '10px', marginTop : '10px', fontSize : '1.2em' }}></i></a>
                     </div>
                     <ul className="social-icons">
                         <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '50%', height: '50%', marginBottom: '2px' }}}>
@@ -45,9 +49,6 @@ export class Header extends Component {
         const guestLinks = (
             <div className="container-fluid">
                 <div className="row media-bar">
-                    <Link to="/login" className="user-link">
-                        <h5>Log in</h5>
-                    </Link>
                     <ul className="social-icons">
                         <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '70%', height: '70%', marginBottom: '2px' }}}>
                         <li>
