@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createMessage } from './messages';
 import { tokenConfig } from './auth';
 
-import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST, GET_ERRORS } from './types';
+import { GET_BLOGPOSTS, GET_BLOGPOST, DELETE_BLOGPOST, ADD_BLOGPOST, GET_ERRORS } from './types';
 
 // GET BLOGPOSTS
 export const getBlogposts = (page)=> dispatch => {
@@ -19,8 +19,19 @@ export const getBlogposts = (page)=> dispatch => {
         }).catch(err => console.log(err));
 };
 
+export const getBlogpost = (id) => (dispatch => {
+    axios
+        .get(`/api/webapp/blogposts/id/`)
+        .then(res => {
+            dispatch({
+                type: GET_BLOGPOST,
+                payload: res.data
+            })
+        })
+})
+
 // DELETE BLOGPOSTS
-export const deleteBlogpost = (id)=> (dispatch, getState) => {
+export const deleteBlogpost = (id) => (dispatch, getState) => {
     axios
         .delete(`/api/webapp/blogposts/${id}`, tokenConfig(getState))
         .then(res => {

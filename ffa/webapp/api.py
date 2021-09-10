@@ -2,11 +2,11 @@ from rest_framework import permissions, viewsets
 from rest_framework.permissions import BasePermission, IsAdminUser, SAFE_METHODS
 from django.http import HttpResponse
 from django.core import serializers
-from webapp.models import Blogpost, Image, Album, Event
+from webapp.models import Blogpost, Image, Album, Event, About
 from knox.auth import TokenAuthentication
 import json
 
-from .serializers import BlogpostSerializer, ImageSerializer, AlbumSerializer, EventSerializer
+from .serializers import AboutSerializer, BlogpostSerializer, ImageSerializer, AlbumSerializer, EventSerializer
 
 class ReadOnly(BasePermission):
     def has_permission(self, request, view):
@@ -75,6 +75,14 @@ class EventViewSet(viewsets.ModelViewSet):
         event = Event.objects.create(name=name, description=description, flyer=flyer, date=date)
         event_data = json.loads(serializers.serialize('json', [event]))[0]
         return HttpResponse(json.dumps(event_data), content_type="application/json", status=200)
+
+class AboutViewSet(viewsets.ModelViewSet):
+    pagination_class = None
+    queryset = About.objects.all()
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = [IsAdminUser | ReadOnly]
+    serializer_class = AboutSerializer
+
     
     
 

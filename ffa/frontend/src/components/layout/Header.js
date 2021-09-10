@@ -22,8 +22,8 @@ export class Header extends Component {
         const authLinks = (
             <div className="container-fluid">
                 <div className="row media-bar">
-                    <Link to="#" onClick={this.logout} className="user-link">
-                        <h5>Logout</h5>
+                    <Link to="/account" className="user-link">
+                        <h5>Profile</h5>
                     </Link>
                     <div className="editor-link">
                         <a href="/editor"><i className="pi pi-user-edit" style={{ marginLeft : '10px', marginTop : '10px', fontSize : '1.2em' }}></i></a>

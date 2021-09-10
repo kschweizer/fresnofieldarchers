@@ -302,3 +302,19 @@ a:hover {
     font-weight:600
   }
 }
+
+
+
+.custom-quill > .ql-container > .ql-editor {
+  min-height: 200px;
+  font-size: 20px;
+}
+
+.custom-quill-public > .ql-container {
+  border: none;
+}
+
+.custom-quill-public > .ql-container > .ql-editor {
+  border: none;
+  font-size: 20px;
+}

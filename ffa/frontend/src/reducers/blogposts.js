@@ -1,4 +1,4 @@
-import { GET_BLOGPOSTS, DELETE_BLOGPOST, ADD_BLOGPOST } from '../actions/types.js';
+import { GET_BLOGPOSTS, GET_BLOGPOST, DELETE_BLOGPOST, ADD_BLOGPOST } from '../actions/types.js';
 
 const initialState = {
     blogposts: []
@@ -13,6 +13,11 @@ export default function(state = initialState, action) {
                 next: action.next,
                 previous: action.previous,
                 current: action.current
+            };
+        case GET_BLOGPOST:
+            return {
+                ...state,
+                blogpost: action.payload
             };
         case DELETE_BLOGPOST:
             return {
