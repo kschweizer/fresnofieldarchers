@@ -49,11 +49,14 @@ export default function Eventform() {
             <div className="card bg-danger">
                 <h3 style={{borderBottom : '2px solid #fff'}}>Register New Event</h3>
                 <h5>(* field is required)</h5>
-                <InputText value={name} onChange={(e) => setName(e.target.value)} placeholder="*Event Name" style={{marginBottom : '5px'}}/>
-                <InputTextarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Event Details" style={{marginBottom : '5px'}}/>
-                <Calendar selectionMode="range" value={date} onChange={(e) => setDate(e.value)} placeholder="*Dates" readOnlyInput />
-                <div style={{backgroundColor : '#111', marginTop : '5px'}}>
-                    <h5>Event Flyer</h5>
+                <h4>*Event Name</h4>
+                <InputText value={name} onChange={(e) => setName(e.target.value)} style={{marginBottom : '5px'}}/>
+                <h4>Event Description</h4>
+                <InputTextarea value={description} onChange={(e) => setDescription(e.target.value)} style={{marginBottom : '5px'}}/>
+                <h4>*Dates</h4>
+                <Calendar selectionMode="range" value={date} onChange={(e) => setDate(e.value)} readOnlyInput />
+                <div style={{marginTop : '5px'}}>
+                    <h4>Event Flyer</h4>
                     <input type="file" onChange={handleUpload} />
                     {fileFlag ? (<h5 style={{color : 'orange'}}><i className="pi pi-exclamation-triangle"></i>FLYER MUST BE A '.pdf' FILE </h5>) : (null)}
                 </div>

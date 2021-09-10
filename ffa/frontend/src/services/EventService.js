@@ -17,6 +17,10 @@ export default class EventService {
     }
 
     deleteEvent(event) {
-        return axios.delete(`/api/webapp/events/${event}`, tokenConfig(store.getState)).then(res => res.data);
+        return axios.delete(`/api/webapp/events/${event}/`, tokenConfig(store.getState)).then(res => res.data);
+    }
+
+    patchEvent(data, pk) {
+        return axios.patch(`/api/webapp/events/${pk}/`, data, tokenConfig(store.getState)).then(res => res.data)
     }
 }

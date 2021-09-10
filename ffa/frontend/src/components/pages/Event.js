@@ -32,7 +32,6 @@ export default function Event(props) {
         const eventDate = eventData.format_date;
         const eventDescription = eventData.description;
         const eventFlyer = eventData.flyer;
-        const eventFlyerThumbnail = eventData.flyer_thumbnail;
         const eventScores = eventData.scores;
 
         return (
@@ -48,7 +47,23 @@ export default function Event(props) {
                         ))}
                         
                     </Document>
-                    {eventFlyer ? (<a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer pdf in separate window</a>) : (null)}
+                    {eventFlyer ? (<a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>) : (null)}
+                </div>
+                <div className="event-scores">
+                    <div className="event-header"><h3 className="event-title">{eventName} Scores</h3></div>
+                    {eventScores ? (
+                        <div>
+                            <Document className="pdf-viewer" file={eventScores} onLoadSuccess={onDocumentLoadSuccess}>
+                                {Array.from(new Array(numPages), (el, index) => (
+                                    <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 600) ? (250) : (550)} />
+                                ))}
+                            </Document>
+                            <a href={eventScores} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open scores in separate window</a>
+                        </div>
+                        ) : (
+                            null
+                        )
+                    }
                 </div>
             </div>
         )

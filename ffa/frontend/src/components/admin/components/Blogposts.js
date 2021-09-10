@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { getBlogposts, deleteBlogpost } from '../../../actions/blogposts';
 import '../../blogposts/Blogposts.scss';
 import BlogForm from '../forms/BlogForm';
+import BlogEditor from '../forms/BlogEditor';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export class Blogposts extends Component {
     static propTypes = {
@@ -19,12 +22,12 @@ export class Blogposts extends Component {
         const {isAuthenticated} = this.props.auth;
         return (
             <div className="blog-container">
-                <BlogForm />
+                <BlogEditor />
                 { this.props.blogposts.map(blogpost => (
                     <article key={blogpost.id} className="blogpost">
                         <h2 className="blog-title">{blogpost.subject}</h2>
                         <h5 className="blog-date">{blogpost.date}</h5>
-                        <p className="blog-body">{blogpost.message}</p>
+                        <ReactQuill theme="snow" value={blogpost.message} readOnly={true} modules={{toolbar : false}} />
                         {isAuthenticated? <button className="btn btn-danger btn-sm" onClick={this.props.deleteBlogpost.bind(this, blogpost.id)}>Delete</button> : null}
                     </article>
                 ))}
