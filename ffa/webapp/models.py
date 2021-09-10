@@ -1,8 +1,9 @@
 import calendar
+from django.core.exceptions import ValidationError
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import pre_delete
+from django.db.models.signals import post_save, pre_delete, pre_save
 from django.dispatch import receiver
 
 # Create your models here.
@@ -63,11 +64,7 @@ class Image(models.Model):
             force_update = True
         super(Image, self).save(force_update=force_update)
 
-# Delete ImageField on S3 storage
-@receiver(pre_delete, sender=Image)
-def image_delete_handler(sender, instance, **kwargs):
-    instance.image.delete(save=False)
-    instance.thumbnail.delete(save=False)
+
 
 class Event(models.Model):
     name = models.CharField(max_length=500, blank=False)
@@ -76,7 +73,7 @@ class Event(models.Model):
     date = models.TextField(blank=True)
     scores = models.FileField(upload_to='events/scores/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+   
     @property
     def format_date(self):
         date = self.date
@@ -93,7 +90,40 @@ class Event(models.Model):
                 res = start
         return res
 
-# Delete ImageField on S3
+class About(models.Model):
+    number = models.CharField(max_length=32, blank=False)
+    pitch = models.TextField(blank=False)
+    info = models.TextField(blank=False)
+    history = models.TextField(blank=False)
+
+
+
+# Delete ImageField on S3 storage
+@receiver(pre_delete, sender=Image)
+def image_delete_handler(sender, instance, **kwargs):
+    instance.image.delete(save=False)
+    instance.thumbnail.delete(save=False)
+
+# Delete FileField on S3
 @receiver(pre_delete, sender=Event)
-def flyer_delete_handler(sender, instance, **kwargs):
-    instance.flyer.delete(save=False)
+def event_delete_handler(sender, instance, **kwargs):
+    if (instance.flyer):
+        instance.flyer.delete(save=False)
+    if (instance.scores):
+        instance.scores.delete(save=False)
+
+# Handle flyer update
+@receiver(pre_save, sender=Event)
+def event_change_handler(sender, instance, **kwargs):
+    if instance.id is None:
+        pass
+    else:
+        prev_event = Event.objects.get(id=instance.id)
+        if prev_event.flyer != instance.flyer:
+            prev_event.flyer.delete(save=False)
+
+# Ensure there is only one instance of model About
+@receiver(pre_save, sender=About)
+def check_solo_about(sender, instance, **kwargs):
+    if (About.objects.exclude(pk=instance.pk).exists()):
+        raise ValidationError("There can be only one About page")
