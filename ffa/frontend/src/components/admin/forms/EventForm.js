@@ -64,7 +64,7 @@ export default function Eventform() {
     return (
         <div>
             <h3>Edit Pinned Event Information:</h3>
-            <ReactQuill className="custom-quill" theme="snow" value={eventText} onChange={handleChange} />
+            <ReactQuill className="custom-quill" theme="snow" value={eventText} onChange={handleChange} preserveWhitespace={true} />
             <button className="btn btn-success" onClick={submitPinnedText}>Update</button>
             <div className="card bg-danger">
                 <h3 style={{borderBottom : '2px solid #fff'}}>Register New Event</h3>

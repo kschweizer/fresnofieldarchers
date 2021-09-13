@@ -50,31 +50,31 @@ function Blogposts() {
             { post1 ? (
                 <article key={post1.id} className="blogpost">
                 <h5 className="blog-date">{post1.date}</h5>
-                <ReactQuill className="custom-quill-public" theme="snow" value={post1.message} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={post1.message} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true} />
             </article>
             ) : null }
             { post2 ? (
                 <article key={post2.id} className="blogpost">
                 <h5 className="blog-date">{post2.date}</h5>
-                <ReactQuill className="custom-quill-public" theme="snow" value={post2.message} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={post2.message} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true} />
             </article>
             ) : null }
             { post3 ? (
                 <article key={post3.id} className="blogpost">
                 <h5 className="blog-date">{post3.date}</h5>
-                <ReactQuill className="custom-quill-public" theme="snow" value={post3.message} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={post3.message} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true} />
             </article>
             ) : null }
             { post4 ? (
                 <article key={post4.id} className="blogpost">
                 <h5 className="blog-date">{post4.date}</h5>
-                <ReactQuill className="custom-quill-public" theme="snow" value={post4.message} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={post4.message} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true} />
             </article>
             ) : null }
             { post5 ? (
                 <article key={post5.id} className="blogpost">
                 <h5 className="blog-date">{post5.date}</h5>
-                <ReactQuill className="custom-quill-public" theme="snow" value={post5.message} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={post5.message} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true} />
             </article>
             ) : null }
             

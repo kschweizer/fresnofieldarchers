@@ -134,7 +134,7 @@ function Blogposts() {
             { post1 ? (
                 <article key={post1.id} className="blogpost">
                 <h5 className="blog-date">{post1.date}</h5>
-                <ReactQuill className="custom-quill" theme="snow" value={post1.message} onChange={handleChange1} />
+                <ReactQuill className="custom-quill" theme="snow" value={post1.message} onChange={handleChange1} preserveWhitespace={true} />
                 <Button className="p-button-success" onClick={updatePost1} label="Update" />
                 <ConfirmDialog visible={visible && selection == post1.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, post1.id)} reject={reject} />
@@ -144,7 +144,7 @@ function Blogposts() {
             { post2 ? (
                 <article key={post2.id} className="blogpost">
                 <h5 className="blog-date">{post2.date}</h5>
-                <ReactQuill className="custom-quill" theme="snow" value={post2.message} onChange={handleChange2} />
+                <ReactQuill className="custom-quill" theme="snow" value={post2.message} onChange={handleChange2} preserveWhitespace={true} />
                 <Button className="p-button-success" onClick={updatePost2} label="Update" />
                 <ConfirmDialog visible={visible && selection == post2.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, post2.id)} reject={reject} />
@@ -154,7 +154,7 @@ function Blogposts() {
             { post3 ? (
                 <article key={post3.id} className="blogpost">
                 <h5 className="blog-date">{post3.date}</h5>
-                <ReactQuill className="custom-quill" theme="snow" value={post3.message} onChange={handleChange3} />
+                <ReactQuill className="custom-quill" theme="snow" value={post3.message} onChange={handleChange3} preserveWhitespace={true} />
                 <Button className="p-button-success" onClick={updatePost3} label="Update" />
                 <ConfirmDialog visible={visible && selection == post3.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, post3.id)} reject={reject} />
@@ -164,7 +164,7 @@ function Blogposts() {
             { post4 ? (
                 <article key={post4.id} className="blogpost">
                 <h5 className="blog-date">{post4.date}</h5>
-                <ReactQuill className="custom-quill" theme="snow" value={post4.message} onChange={handleChange4} />
+                <ReactQuill className="custom-quill" theme="snow" value={post4.message} onChange={handleChange4} preserveWhitespace={true} />
                 <Button className="p-button-success" onClick={updatePost4} label="Update" />
                 <ConfirmDialog visible={visible && selection == post4.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, post4.id)} reject={reject} />
@@ -174,7 +174,7 @@ function Blogposts() {
             { post5 ? (
                 <article key={post5.id} className="blogpost">
                 <h5 className="blog-date">{post5.date}</h5>
-                <ReactQuill className="custom-quill" theme="snow" value={post5.message} onChange={handleChange5} />
+                <ReactQuill className="custom-quill" theme="snow" value={post5.message} onChange={handleChange5} preserveWhitespace={true} />
                 <Button className="p-button-success" onClick={updatePost5} label="Update" />
                 <ConfirmDialog visible={visible && selection == post5.id} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, post5.id)} reject={reject} />
