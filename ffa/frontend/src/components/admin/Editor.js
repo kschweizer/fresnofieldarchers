@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import EventForm from './forms/EventForm';
+import Events from './components/Events';
 import PhotoEditor from './components/PhotoEditor';
 import About from './components/About';
 import './Editor.scss';
@@ -38,7 +38,7 @@ function Editor() {
             <Switch>
                 <Route exact path="/editor" component={Blogposts}/>
                 <Route exact path="/editor/about" component={About}/>
-                <Route exact path="/editor/events" component={EventForm}/>
+                <Route exact path="/editor/events" component={Events}/>
                 <Route exact path="/editor/photos" component={PhotoEditor}/>
             </Switch>
         </div>

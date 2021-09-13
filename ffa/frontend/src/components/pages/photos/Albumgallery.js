@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import Album  from './Album';
+import Album from './Album';
 import { getAlbums, getAlbum } from "../../../actions/photos";
 import '../Photos.scss';
 

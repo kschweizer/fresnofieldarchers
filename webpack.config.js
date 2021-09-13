@@ -1,3 +1,5 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     module: {
         rules: [
@@ -28,4 +30,7 @@ module.exports = {
             },
         ],
     },
+    plugins: [
+        new BundleAnalyzerPlugin()
+    ]
 };

@@ -12,9 +12,9 @@ function BlogEditor(props) {
     }
 
     const onSubmit = () => {
-        let blogpost = { subject : 'randomshit', message : text };
+        let blogpost = { subject : 'deprecated', message : text };
         props.addBlogpost(blogpost);
-        setText('')
+        setText('');
     }
 
     return (

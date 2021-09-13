@@ -4,9 +4,10 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import EventService from '../../../services/EventService';
 import Event from './Event';
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { ConfirmDialog } from 'primereact/confirmdialog';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import EventForm from '../forms/EventForm';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -19,7 +20,6 @@ export default function events() {
     const eventService = new EventService();
 
     const toast = useRef(null);
-    let location = useLocation();
     let query = useQuery();
     
 
@@ -27,12 +27,6 @@ export default function events() {
     useEffect(() => {
         eventService.getEvents().then(data => setEvents(data));
     }, []); 
-
-    const imageBodyTemplate = (rowData) => {
-        return (
-            <img src={rowData.flyer_thumbnail} onError={(e) => e.target.src='/static/placeholder.jpg'} alt={rowData.image} />
-        );
-    };
 
     const accept = (event_id) => {
         eventService.deleteEvent(event_id).then(res => eventService.getEvents().then(data => setEvents(data)));
@@ -43,33 +37,12 @@ export default function events() {
         toast.current.show({ severity: 'info', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
     };
 
-    const confirmDelete = () => {
-        confirmDialog({
-            message: 'Do you want to delete this record?',
-            header: 'Delete Confirmation',
-            icon: 'pi pi-info-circle',
-            acceptClassName: 'p-button-danger',
-            accept,
-            reject
-        });
-    };
-
-    const scoresBodyTemplate = (rowData) => {
-        return (
-            rowData.scores ? (
-                <div>{rowData.scores}</div>
-            ) : (
-                <div>Scores Pending...</div>
-            )
-        );
-    };
-
     const deleteButtonTemplate = (rowData) => {
         let event = rowData.id;
         return (
             event ? (
                 <> 
-                <ConfirmDialog visible={visible && selection == event} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to proceed?"
+                <ConfirmDialog visible={visible && selection == event} onHide={() => {setSelection(null); setVisible(false);}} message="Are you sure you want to delete this record?"
                                         header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept.bind(this, event)} reject={reject} />
                 <Button onClick={() => {setSelection(event); setVisible(true);}} icon="pi pi-times" label="Delete" />
                 </>
@@ -89,6 +62,7 @@ export default function events() {
 
     return (
         <div className="container-lg events">
+            <EventForm />
             <Toast ref={toast}/>
                 {query.get("event") ? (
                     null
