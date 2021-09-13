@@ -53,6 +53,7 @@ export const addBlogpost = (blogpost)=> (dispatch, getState) => {
                 type: ADD_BLOGPOST,
                 payload: res.data
             });
+            window.location.href = ('/editor');
         })
         .catch(err => {
             const errors = {

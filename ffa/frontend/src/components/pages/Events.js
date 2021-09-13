@@ -6,6 +6,8 @@ import EventService from '../../services/EventService';
 import Event from './Event';
 
 import './Events.scss';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -13,6 +15,7 @@ function useQuery() {
 
 const Events = () => {
     const [events, setEvents] = useState([]);
+    const [eventText, setEventText] = useState('');
     const eventService = new EventService();
 
     let location = useLocation();
@@ -20,6 +23,7 @@ const Events = () => {
 
     useEffect(() => {
         eventService.getEvents().then(data => setEvents(data));
+        eventService.getPinnedEvent().then(data => setEventText(data.text));
     }, []); 
 
     const nameBodyTemplate = (rowData) => {
@@ -31,6 +35,7 @@ const Events = () => {
 
     return (
             <div className="container-lg events">
+                <ReactQuill className="custom-quill-public" theme="snow" value={eventText} readOnly={true} modules={{ toolbar : false }} />
                 {query.get("event") ? (
                     null
                 ) : (

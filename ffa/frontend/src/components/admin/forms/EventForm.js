@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Redirect } from 'react-router';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import EventService from '../../../services/EventService';
-import Events from '../components/Events';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function Eventform() {
     const [name, setName] = useState('');
@@ -13,8 +14,24 @@ export default function Eventform() {
     const [date, setDate] = useState('');
     const [flyer, setFlyer] = useState('');
     const [fileFlag, setFileFlag] = useState(false);
+    const [eventText, setEventText] = useState('');
     const eventService = new EventService();
 
+    useEffect(() => {
+        eventService.getPinnedEvent().then(data => {
+            console.log(data)
+            setEventText(data.text);
+        });
+    }, []) 
+
+    const handleChange = (val) => {
+        setEventText(val);
+    }
+
+    const submitPinnedText = () => {
+        let data = { text : eventText };
+        eventService.patchPinnedEvent(data);
+    }
 
     function handleUpload(e) {
         const inFile = e.target.files[0];
@@ -46,6 +63,9 @@ export default function Eventform() {
 
     return (
         <div>
+            <h3>Edit Pinned Event Information:</h3>
+            <ReactQuill className="custom-quill" theme="snow" value={eventText} onChange={handleChange} />
+            <button className="btn btn-success" onClick={submitPinnedText}>Update</button>
             <div className="card bg-danger">
                 <h3 style={{borderBottom : '2px solid #fff'}}>Register New Event</h3>
                 <h5>(* field is required)</h5>
@@ -64,7 +84,6 @@ export default function Eventform() {
                     <Button label="Submit" className="p-button-success" onClick={onSubmit}/>
                 </div>
             </div>
-            <Events />
         </div>
     );
 };

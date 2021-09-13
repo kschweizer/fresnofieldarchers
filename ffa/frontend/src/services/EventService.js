@@ -9,7 +9,7 @@ export default class EventService {
     }
 
     getEvent(event) {
-        return axios.get(`/api/webapp/events/${event}`).then(res => res.data);
+        return axios.get(`/api/webapp/events/${event}/`).then(res => res.data);
     }
 
     postEvent(data) {
@@ -21,6 +21,14 @@ export default class EventService {
     }
 
     patchEvent(data, pk) {
-        return axios.patch(`/api/webapp/events/${pk}/`, data, tokenConfig(store.getState)).then(res => res.data)
+        return axios.patch(`/api/webapp/events/${pk}/`, data, tokenConfig(store.getState)).then(res => res.data);
+    }
+
+    getPinnedEvent() {
+        return axios.get('/api/webapp/pinnedevent/1/').then(res => res.data);
+    }
+
+    patchPinnedEvent(data) {
+        return axios.patch('/api/webapp/pinnedevent/1/', data, tokenConfig(store.getState)).then(res => res.data);
     }
 }

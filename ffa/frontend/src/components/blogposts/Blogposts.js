@@ -1,61 +1,93 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getBlogposts, deleteBlogpost } from '../../actions/blogposts';
+import React, { useEffect, useState} from 'react';
 import './Blogposts.scss';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
 
-export class Blogposts extends Component {
-    static propTypes = {
-        auth: PropTypes.object.isRequired,
-        blogposts: PropTypes.array.isRequired
+
+function Blogposts() {
+
+    const [page, setPage] = useState(1);
+    const [previous, setPrevious] = useState(null);
+    const [next, setNext] = useState(null);
+    const [post1, setPost1] = useState(null);
+    const [post2, setPost2] = useState(null);
+    const [post3, setPost3] = useState(null);
+    const [post4, setPost4] = useState(null);
+    const [post5, setPost5] = useState(null);
+    
+    function getBlogposts(page_num) {
+        axios.get(`/api/webapp/blogposts/?page=${page_num}`).then(res => {
+            let results = res.data['results'];
+            setPrevious(res.data['previous']);
+            setNext(res.data['next']);
+            results[0] ? (setPost1(results[0])) : setPost1(null);
+            results[1] ? (setPost2(results[1])) : setPost2(null);
+            results[2] ? (setPost3(results[2])) : setPost3(null);
+            results[3] ? (setPost4(results[3])) : setPost4(null);
+            results[4] ? (setPost5(results[4])) : setPost5(null);
+        });
+    }
+
+    useEffect(() => {
+        getBlogposts(page);
+    }, []);
+
+    const nextPage = e => {
+        let newPage = page + 1;
+        setPage(newPage);
+        getBlogposts(newPage);
     };
 
-    componentDidMount() {
-        this.props.getBlogposts(1);
-    }
+    const prevPage = e => {
+        let newPage = page - 1;
+        setPage(newPage);
+        getBlogposts(newPage);
+    };
 
-    render() {
-        const {isAuthenticated} = this.props.auth;
-        return (
-            <div className="blog-container">
-                { this.props.blogposts.map(blogpost => (
-                    <article key={blogpost.id} className="blogpost">
-                        <h2 className="blog-title">{blogpost.subject}</h2>
-                        <h5 className="blog-date">{blogpost.date}</h5>
-                        <p className="blog-body">{blogpost.message}</p>
-                    </article>
-                ))}
-                { this.props.previous !== null &&
-                    <button className="blog-button btn btn-primary btn-sm" onClick={this.prevPage}>PREVIOUS</button>
-                }
+    return (
+        <div className="blog-container">
+            { post1 ? (
+                <article key={post1.id} className="blogpost">
+                <h5 className="blog-date">{post1.date}</h5>
+                <ReactQuill className="custom-quill-public" theme="snow" value={post1.message} readOnly={true} modules={{ toolbar : false }} />
+            </article>
+            ) : null }
+            { post2 ? (
+                <article key={post2.id} className="blogpost">
+                <h5 className="blog-date">{post2.date}</h5>
+                <ReactQuill className="custom-quill-public" theme="snow" value={post2.message} readOnly={true} modules={{ toolbar : false }} />
+            </article>
+            ) : null }
+            { post3 ? (
+                <article key={post3.id} className="blogpost">
+                <h5 className="blog-date">{post3.date}</h5>
+                <ReactQuill className="custom-quill-public" theme="snow" value={post3.message} readOnly={true} modules={{ toolbar : false }} />
+            </article>
+            ) : null }
+            { post4 ? (
+                <article key={post4.id} className="blogpost">
+                <h5 className="blog-date">{post4.date}</h5>
+                <ReactQuill className="custom-quill-public" theme="snow" value={post4.message} readOnly={true} modules={{ toolbar : false }} />
+            </article>
+            ) : null }
+            { post5 ? (
+                <article key={post5.id} className="blogpost">
+                <h5 className="blog-date">{post5.date}</h5>
+                <ReactQuill className="custom-quill-public" theme="snow" value={post5.message} readOnly={true} modules={{ toolbar : false }} />
+            </article>
+            ) : null }
+            
+            { previous !== null &&
+                <button className="blog-button btn btn-primary btn-sm" onClick={prevPage}>PREVIOUS</button>
+            }
 
-                
-                { this.props.next !== null && 
-                    <button className="blog-button btn btn-primary btn-sm" onClick={this.nextPage}>NEXT</button> 
-                }
-            </div>
-        );
-    }
-
-    nextPage = e => {
-        const current = this.props.current + 1;
-        console.log(current);
-        this.props.getBlogposts(current);
-    }
-
-    prevPage = e => {
-        const current = this.props.current - 1;
-        console.log(current);
-        this.props.getBlogposts(current);
-    }
+            
+            { next !== null && 
+                <button className="blog-button btn btn-primary btn-sm" onClick={nextPage}>NEXT</button> 
+            }
+        </div>
+    );
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-    blogposts: state.blogposts.blogposts,
-    next: state.blogposts.next,
-    previous: state.blogposts.previous,
-    current: state.blogposts.current
-});
-
-export default connect(mapStateToProps, { getBlogposts, deleteBlogpost })(Blogposts);
+export default Blogposts;
