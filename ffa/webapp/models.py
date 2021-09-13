@@ -90,6 +90,9 @@ class Event(models.Model):
                 res = start
         return res
 
+class PinnedEvent(models.Model):
+    text = models.TextField(blank=False)
+
 class About(models.Model):
     number = models.CharField(max_length=32, blank=False)
     pitch = models.TextField(blank=False)
@@ -127,3 +130,9 @@ def event_change_handler(sender, instance, **kwargs):
 def check_solo_about(sender, instance, **kwargs):
     if (About.objects.exclude(pk=instance.pk).exists()):
         raise ValidationError("There can be only one About page")
+
+# Ensure there is only one instance of model PinnedEvent
+@receiver(pre_save, sender=PinnedEvent)
+def check_solo_about(sender, instance, **kwargs):
+    if (PinnedEvent.objects.exclude(pk=instance.pk).exists()):
+        raise ValidationError("There can be only one PinnedEvent section")
