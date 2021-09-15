@@ -35,7 +35,7 @@ const Events = () => {
 
     return (
             <div className="container-lg events">
-                <ReactQuill className="custom-quill-public" theme="snow" value={eventText} readOnly={true} modules={{ toolbar : false }} />
+                <ReactQuill className="custom-quill-public" theme="snow" value={eventText} readOnly={true} modules={{ toolbar : false }} preserveWhitespace={true}/>
                 {query.get("event") ? (
                     null
                 ) : (
