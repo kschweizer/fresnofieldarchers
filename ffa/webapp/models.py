@@ -115,7 +115,7 @@ def event_delete_handler(sender, instance, **kwargs):
     if (instance.scores):
         instance.scores.delete(save=False)
 
-# Handle flyer update
+# Handle flyer and scores update
 @receiver(pre_save, sender=Event)
 def event_change_handler(sender, instance, **kwargs):
     if instance.id is None:
@@ -124,6 +124,9 @@ def event_change_handler(sender, instance, **kwargs):
         prev_event = Event.objects.get(id=instance.id)
         if prev_event.flyer != instance.flyer:
             prev_event.flyer.delete(save=False)
+        if prev_event.scores != instance.scores:
+            prev_event.scores.delete(save=False)
+
 
 # Ensure there is only one instance of model About
 @receiver(pre_save, sender=About)
