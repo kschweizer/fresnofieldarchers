@@ -35,13 +35,13 @@ export default function About() {
     
     return (
         <div className="about-section container-lg">
-            <div className="about-header row">
+            <div className="about-header">
                 <h2>Interested in joining?</h2>
             </div>
             <div className="container-lg member-info">
                 {pitch ? (<ReactQuill className="custom-quill-public" value={pitch} readOnly={true} preserveWhitespace={true} modules={{ toolbar : false }} />) : null}
             </div>
-            <div className="about-header row">
+            <div className="about-header">
                 <h2>Club information</h2>
             </div>
             <div className="general-info container-lg">
@@ -77,7 +77,7 @@ export default function About() {
                     ) : null}
                 </div>
             </div>
-            <div className="about-header row">
+            <div className="about-header">
                 <h2>Club History</h2>
             </div>
             <div className="container-lg">
