@@ -6,7 +6,8 @@ import './Events.scss';
 export default function Event(props) {
     const [event, setEvent] = useState(null)
     const eventService = new EventService();
-    const [numPages, setNumPages] = useState(null);
+    const [numPages1, setNumPages1] = useState(null);
+    const [numPages2, setNumPages2] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [width, setWidth] = useState(window.innerWidth);
     pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -23,8 +24,12 @@ export default function Event(props) {
 
     window.addEventListener('resize', handleResize);
 
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
+    function onDocumentLoadSuccess1 ({ numPages }) {
+        setNumPages1(numPages);
+    }
+
+    function onDocumentLoadSuccess2 ({ numPages }) {
+        setNumPages2(numPages);
     }
 
     const eventTemplate = (eventData) => {
@@ -41,8 +46,8 @@ export default function Event(props) {
                 </div>
                 <h5>{eventDate}</h5>
                 <div className="event-flyer">
-                    <Document className="pdf-viewer" file={eventFlyer} onLoadSuccess={onDocumentLoadSuccess}>
-                        {Array.from(new Array(numPages), (el, index) => (
+                    <Document className="pdf-viewer" file={eventFlyer} onLoadSuccess={onDocumentLoadSuccess1}>
+                        {Array.from(new Array(numPages1), (el, index) => (
                             <Page key={`page_${index + 1}`} pageNumber={index + 1} width={(width < 600) ? (250) : (550)} renderAnnotationLayer={false} />
                         ))}
                         
@@ -53,8 +58,8 @@ export default function Event(props) {
                     <div className="event-header"><h3 className="event-title">{eventName} Scores</h3></div>
                     {eventScores ? (
                         <div>
-                            <Document className="pdf-viewer" file={eventScores} onLoadSuccess={onDocumentLoadSuccess}>
-                                {Array.from(new Array(numPages), (el, index) => (
+                            <Document className="pdf-viewer" file={eventScores} onLoadSuccess={onDocumentLoadSuccess2}>
+                                {Array.from(new Array(numPages2), (el, index) => (
                                     <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 600) ? (250) : (550)} />
                                 ))}
                             </Document>
