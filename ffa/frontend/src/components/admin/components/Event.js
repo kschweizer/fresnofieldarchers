@@ -15,8 +15,8 @@ export default function Event(props) {
     const [scoresUpload, setScoresUpload] = useState(null);
     const [fileFlag1, setFileFlag1] = useState(false);
     const [fileFlag2, setFileFlag2] = useState(false);
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [numPages1, setNumPages1] = useState(null);
+    const [numPages2, setNumPages2] = useState(null);
     const [width, setWidth] = useState(window.innerWidth);
     pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -58,8 +58,12 @@ export default function Event(props) {
         });
     };
 
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
+    function onDocumentLoadSuccess1({ numPages }) {
+        setNumPages1(numPages);
+    }
+
+    function onDocumentLoadSuccess2({ numPages }) {
+        setNumPages2(numPages);
     }
 
     const deleteScores = () => {
@@ -139,8 +143,8 @@ export default function Event(props) {
                     { flyer ? (
                         <>
                             <a href={flyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>
-                            <Document className="pdf-viewer" file={flyer} onLoadSuccess={onDocumentLoadSuccess}>
-                                {Array.from(new Array(numPages), (el, index) => (
+                            <Document className="pdf-viewer" file={flyer} onLoadSuccess={onDocumentLoadSuccess1}>
+                                {Array.from(new Array(numPages1), (el, index) => (
                                     <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 600) ? (250) : (550)} />
                                 ))}
                                 
@@ -162,8 +166,8 @@ export default function Event(props) {
                     {scores ? (
                         <div>
                             <a href={scores} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open scores in separate window</a>
-                            <Document className="pdf-viewer" file={scores} onLoadSuccess={onDocumentLoadSuccess}>
-                                {Array.from(new Array(numPages), (el, index) => (
+                            <Document className="pdf-viewer" file={scores} onLoadSuccess={onDocumentLoadSuccess2}>
+                                {Array.from(new Array(numPages2), (el, index) => (
                                     <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 600) ? (250) : (550)} />
                                 ))}
                             </Document>
