@@ -39,7 +39,6 @@ function Album(props) {
     }, [location]); // Only use if albums changes
 
     function postDelete(deleteCount, deleteTotal) {
-        console.log(deleteCount);
         if (deleteCount == deleteTotal) {
             props.getAlbum(props.album_id);
         }
