@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
-import { addPhoto, addAlbum } from '../../../actions/photos';
+import { addPhoto, addAlbum, getAlbums} from '../../../actions/photos';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import '../../../components/pages/Photos.scss';
@@ -29,7 +29,7 @@ function AlbumForm(props) {
     const onSubmit = e => {
         e.preventDefault();
         const album = { title, description };
-        props.addAlbum(album);
+        props.addAlbum(album).then(() => (props.getAlbums()));
     };
         
     return (
@@ -52,4 +52,4 @@ const mapStateToProps = state => ({
     album: state.photos.album,
 });
 
-export default connect(mapStateToProps, {addPhoto, addAlbum})(AlbumForm);
+export default connect(mapStateToProps, {addPhoto, addAlbum, getAlbums})(AlbumForm);
