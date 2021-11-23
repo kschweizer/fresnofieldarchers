@@ -17,8 +17,8 @@ export const getPhotos = ()=> dispatch => {
 };
 
 // ADD PHOTO
-export const addPhoto = (photo)=> (dispatch, getState) => {
-    axios
+export const addPhoto = (photo) => (dispatch, getState) => {
+    return axios
         .post('/api/webapp/photos/', photo, tokenConfig(getState))
             .then(res => {
                 dispatch(createMessage({photoAdded: 'Upload success'}));
@@ -31,9 +31,9 @@ export const addPhoto = (photo)=> (dispatch, getState) => {
 };
 
 // DELETE PHOTO
-export const deletePhoto = (id)=> (dispatch, getState) => {
-    axios
-        .delete(`/api/webapp/photos/${id}`, tokenConfig(getState))
+export const deletePhoto = (id) => (dispatch, getState) => {
+    return axios
+        .delete(`/api/webapp/photos/${id}/`, tokenConfig(getState))
             .then(res => {
                 dispatch(createMessage({photoDeleted: 'Photo deleted'}));
                 dispatch({
@@ -46,7 +46,7 @@ export const deletePhoto = (id)=> (dispatch, getState) => {
 
 // CREATE ALBUM
 export const addAlbum = (album)=> (dispatch, getState) => {
-    axios
+    return axios
         .post('/api/webapp/albums/', album, tokenConfig(getState))
             .then(res => {
                 dispatch({
@@ -57,7 +57,7 @@ export const addAlbum = (album)=> (dispatch, getState) => {
             .catch(err => console.log(err));
 };
 
-export const getAlbums = ()=> dispatch => {
+export const getAlbums = () => dispatch => {
     axios
         .get(`/api/webapp/albums/`)
         .then(res => {
@@ -68,9 +68,9 @@ export const getAlbums = ()=> dispatch => {
         }).catch(err => console.log(err));
 };
 
-export const getAlbum = (id)=> dispatch => {
+export const getAlbum = (id) => dispatch => {
     axios
-        .get(`/api/webapp/albums/${id}`)
+        .get(`/api/webapp/albums/${id}/`)
         .then(res => {
             dispatch({
                 type: GET_ALBUM,
@@ -80,7 +80,7 @@ export const getAlbum = (id)=> dispatch => {
 };
 
 export const deleteAlbum = (id)=> (dispatch, getState) => {
-    axios
+    return axios
         .delete(`/api/webapp/albums/${id}`, tokenConfig(getState))
         .then(res => {
             dispatch({

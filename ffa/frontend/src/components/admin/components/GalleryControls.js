@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Album  from './Album';
+import AlbumForm from '../forms/AlbumForm';
 import { getAlbums, getAlbum, deleteAlbum } from "../../../actions/photos";
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Button } from 'primereact/button';
@@ -18,7 +19,7 @@ function GalleryControls(props) {
     let query = useQuery();
     
     const accept = (album) => {
-        props.deleteAlbum(album);
+        props.deleteAlbum(album).then(() => (props.getAlbums()));
         toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
     };
 
@@ -39,11 +40,12 @@ function GalleryControls(props) {
 
     useEffect(() => {
         props.getAlbums();
-    }, [props.refresh]); // Only use if albums changes
+    }, []); // Only use if albums changes
 
     return (
         <div>
             <Toast ref={toast} />
+            {query.get("album") ? null : <AlbumForm />}
             <div className="gallery-header row">
                 <h3 className="gallery-title">
                     Edit An Existing Album

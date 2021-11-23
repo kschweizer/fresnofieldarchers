@@ -45,6 +45,7 @@ export default function Event(props) {
                     <h3 className="event-title">{eventName}</h3>
                 </div>
                 <h5>{eventDate}</h5>
+                { eventFlyer ? (
                 <div className="event-flyer">
                     <Document className="pdf-viewer" file={eventFlyer} onLoadSuccess={onDocumentLoadSuccess1}>
                         {Array.from(new Array(numPages1), (el, index) => (
@@ -52,11 +53,13 @@ export default function Event(props) {
                         ))}
                         
                     </Document>
-                    {eventFlyer ? (<a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>) : (null)}
+                    <a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>
                 </div>
+                ) : null }
+                {eventScores ? (
                 <div className="event-scores">
                     <div className="event-header"><h3 className="event-title">{eventName} Scores</h3></div>
-                    {eventScores ? (
+                    
                         <div>
                             <Document className="pdf-viewer" file={eventScores} onLoadSuccess={onDocumentLoadSuccess2}>
                                 {Array.from(new Array(numPages2), (el, index) => (
@@ -65,11 +68,8 @@ export default function Event(props) {
                             </Document>
                             <a href={eventScores} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open scores in separate window</a>
                         </div>
-                        ) : (
-                            null
-                        )
-                    }
                 </div>
+                ) : null }
             </div>
         )
     }

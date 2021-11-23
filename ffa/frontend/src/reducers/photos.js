@@ -1,8 +1,7 @@
 import { GET_PHOTOS, ADD_PHOTO, ADD_ALBUM, GET_ALBUMS, GET_ALBUM, DELETE_ALBUM, DELETE_PHOTO } from '../actions/types.js';
 
 const initialState = {
-    photos: [],
-    refresh: false
+    photos: []
 };
 
 export default function(state = initialState, action) {
@@ -13,15 +12,8 @@ export default function(state = initialState, action) {
                 photos: action.payload
             };
         case ADD_PHOTO:
-            return {
-                ...state,
-                refresh: !state.refresh
-            };
         case ADD_ALBUM:
-            return {
-                ...state,
-                refresh: !state.refresh
-            }
+            return state;
         case GET_ALBUMS:
             return {
                 ...state,
@@ -34,10 +26,6 @@ export default function(state = initialState, action) {
             }
         case DELETE_ALBUM:
         case DELETE_PHOTO:
-            return {
-                ...state,
-                refresh: !state.refresh
-            }
         default:
             return state;
     }

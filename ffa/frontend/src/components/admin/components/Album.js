@@ -7,7 +7,6 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { FileUpload } from 'primereact/fileupload';
-import { ProgressBar } from 'primereact/progressbar';
 import '../../pages/Photos.scss';
 
 
@@ -25,6 +24,8 @@ function Album(props) {
     const [visible, setVisible] = useState(false);
     const [selection, setSelection] = useState(new Set());
     const [loading, setLoading] = useState(true);
+    const [uploads, setUploads] = useState(null);
+    const [message, setMessage] = useState([]);
     const toast = useRef(null);
     const fileUpload = useRef(null);
     let location = useLocation();
@@ -35,15 +36,29 @@ function Album(props) {
             setLoading(false);
             setSelection(new Set());
         }
-    }, [location, props.refresh]); // Only use if albums changes
+    }, [location]); // Only use if albums changes
+
+    function postDelete(deleteCount, deleteTotal) {
+        console.log(deleteCount);
+        if (deleteCount == deleteTotal) {
+            props.getAlbum(props.album_id);
+        }
+    }
 
     const accept = () => {
         toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
         setVisible(false);
+        let deleteCount = 0;
+        let deleteTotal = selection.size;
         for (let img of selection) {
-            props.deletePhoto(img);
+            props.deletePhoto(img).then(() => {
+                deleteCount++;
+                postDelete(deleteCount, deleteTotal);
+            });
         }
-        setSelection(new Set());};
+        setMessage([`Deleted ${selection.size} photos. Refresh to see changes.`]);
+        setSelection(new Set());
+    };
 
     const reject = () => {
         toast.current.show({ severity: 'info', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
@@ -52,11 +67,28 @@ function Album(props) {
 
     const customUpload = (e) => {
         let images = e.files;
+        let _uploads = { curr: 0, total: images.length };
+        setUploads(_uploads);
         for (let i = 0; i < images.length; i++) {
             let data = new FormData();
             data.append(`image`, images[i]);
             data.append(`album`, props.album_id);
-            props.addPhoto(data);
+
+            props.addPhoto(data)
+            .then(() => {
+                _uploads.curr += 1
+                setUploads(_uploads);
+                setMessage((prevMessage) => ([
+                    ...prevMessage,
+                    "Uploaded file successfully: " + images[i].name,
+                ]));
+            })
+            .catch(() => {
+                setMessage((prevMessage) => ([
+                    ...prevMessage,
+                    "Could not upload file: " + images[i.name],
+                ]))
+            });
         }
         fileUpload.current.clear();
     }
@@ -89,6 +121,22 @@ function Album(props) {
                         : 
                         null }
                     </div>
+
+                    {uploads && uploads.total > 0 && (
+                        <div>
+                            Photos uploaded: {uploads.curr} / {uploads.total}
+                            <br></br>
+                            Refresh page to see changes.
+                        </div>
+                    )}
+                    
+                    {message.length > 0 && (
+                        <ul>
+                            {message.map((item, i) => {
+                            return <li key={i}>{item}</li>;
+                            })}
+                        </ul>
+                    )}
                     
                     {(selection.size > 0) ? (
                         <div>
