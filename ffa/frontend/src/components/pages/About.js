@@ -1,6 +1,9 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './About.scss';
-import { FaEnvelope, FaFacebookF, FaPhone, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';

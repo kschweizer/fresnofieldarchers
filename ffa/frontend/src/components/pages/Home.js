@@ -1,9 +1,7 @@
 import React, { Component, Fragment, Suspense } from 'react'
 import { connect } from 'react-redux';
 import Blogposts from '../blogposts/Blogposts';
-import Banner from '../layout/Banner';
 import PropTypes, { bool } from 'prop-types';
-import { FaBaby } from 'react-icons/fa';
 import './Home.scss';
 
 export class Home extends Component {

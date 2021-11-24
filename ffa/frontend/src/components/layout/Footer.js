@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FaEnvelope, FaFacebook } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
 export class Footer extends Component {
@@ -22,7 +23,6 @@ export class Footer extends Component {
                     <h6>Quick Links</h6>
                     <ul className="footer-links">
                       <li><a href="/about-us">About Us</a></li>
-                      <li><a href="/membership">Membership</a></li>
                     </ul>
                   </div>
                 </div>
@@ -32,18 +32,18 @@ export class Footer extends Component {
                 <div className="row">
                   <div className="col-sm-12 col-md-9">
                     <ul className="social-icons">
-                      <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '80%', height: '80%', marginBottom: '2px' }}}>
+                      <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '70%', height: '70%', marginBottom: '2px' }}}>
                         <li>
-                            <a className="facebook" href="https://www.facebook.com/fresnoarchers/" target="_blank">
-                                <FaFacebook />
+                            <a className="facebook" href="https://www.facebook.com/fresnoarchers/" rel="noreferrer" target="_blank">
+                              <FaFacebook />
                             </a>
                         </li>
                         <li>
-                              <a className="email" href="mailto: fresnofieldarchers@gmail.com" target="_blank">
-                                  <FaEnvelope />
-                              </a>                        
-                          </li>
-                        </IconContext.Provider> 
+                            <a className="email" href="mailto: fresnofieldarchers@gmail.com" target="_blank">
+                              <FaEnvelope />
+                            </a>                        
+                        </li>
+                      </IconContext.Provider> 
                       </ul>
                   </div>
                   <div className="col-sm-12 col-md-3">

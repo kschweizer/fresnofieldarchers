@@ -1,5 +1,5 @@
 // REACT
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 
 // Routing
@@ -11,15 +11,8 @@ import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 // Main components
-import Editor from './admin/Editor';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Events from './pages/Events';
-import Membership from './pages/Membership';
-import Range from './pages/Range';
-import Photos from './pages/Photos';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Account from './accounts/Account';
@@ -31,7 +24,6 @@ import { loadUser } from '../actions/auth';
 
 // STYLES and Frontend tools
 import '../styles/App.scss';
-import SimpleReactLightbox from 'simple-react-lightbox';
 
 // Alert Options
 const alertOptions = {
@@ -47,7 +39,6 @@ class App extends Component {
 
     render() {
         return (
-            <SimpleReactLightbox>
             <Provider store={store}>
                 <AlertProvider template={AlertTemplate}
                 {...alertOptions}>
@@ -57,17 +48,17 @@ class App extends Component {
                         <div className="wrapper">    
                             <Header />
                             <Alerts />
+                            <Suspense fallback={<div>Loading...</div>}>
                             <Switch>
-                                <Route exact path="/" component={Home} />                               
-                                <Route exact path="/about-us" component={About} />
-                                <Route exact path="/events" component={Events} />
-                                <Route exact path="/membership" component={Membership} />
-                                <Route exact path="/range" component={Range} />
-                                <Route exact path="/photos" component={Photos} />
+                                <Route exact path="/" component={lazy(() => import('./pages/Home'))} />                               
+                                <Route exact path="/about-us" component={lazy(() => import('./pages/About'))} />
+                                <Route exact path="/events" component={lazy(() => import('./pages/Events'))} />
+                                <Route exact path="/photos" component={lazy(() => import('./pages/Photos'))} />
                                 <Route exact path="/login" component={Login} />
                                 <PrivateRoute exact path="/account" component={Account} />
-                                <PrivateRoute path="/editor" component={Editor} />
-                            </Switch>                           
+                                <PrivateRoute path="/editor" component={lazy(() => import('./admin/Editor'))} />
+                            </Switch>    
+                            </Suspense>                       
                             <Footer />
                         </div>
                     </Fragment>
@@ -75,7 +66,6 @@ class App extends Component {
                 </Router>
                 </AlertProvider>
             </Provider>
-            </SimpleReactLightbox>
         )
      }
 

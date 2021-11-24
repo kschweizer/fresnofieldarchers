@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Albumgallery from './photos/Albumgallery';
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 
 export class Photos extends Component {
@@ -15,7 +16,9 @@ export class Photos extends Component {
 
         return (
             <div>
-                { guestPage }
+                <SimpleReactLightbox>
+                    { guestPage }
+                </SimpleReactLightbox>
             </div>
         )
     }
