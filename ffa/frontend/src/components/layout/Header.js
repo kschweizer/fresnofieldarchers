@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Navbar } from './Navbar';
 import { Link } from 'react-router-dom';
 import { logout } from '../../actions/auth';
-import { FaEnvelope, FaFacebookF, FaUser } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaFacebookF } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
 export class Header extends Component {
@@ -26,12 +27,12 @@ export class Header extends Component {
                         <h5>Profile</h5>
                     </Link>
                     <div className="editor-link">
-                        <a href="/editor"><i className="pi pi-user-edit" style={{ marginLeft : '10px', marginTop : '10px', fontSize : '1.2em' }}></i></a>
+                        <a href="/editor"><i className="pi pi-user-edit" style={{ marginLeft : '10px', marginTop : '5px', fontSize : '1.2em' }}></i></a>
                     </div>
                     <ul className="social-icons">
-                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '50%', height: '50%', marginBottom: '2px' }}}>
+                        <IconContext.Provider value={{ style: { verticalAlign: 'middle', width: '70%', height: '70%', marginBottom: '2px' }}}>
                         <li>
-                            <a className="facebook" href="https://www.facebook.com/fresnoarchers/" target="_blank">
+                            <a className="facebook" href="https://www.facebook.com/fresnoarchers/" rel="noreferrer" target="_blank">
                                 <FaFacebookF />
                             </a>
                         </li>
