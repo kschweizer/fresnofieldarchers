@@ -10,11 +10,6 @@ export class Home extends Component {
         auth: PropTypes.object.isRequired
     };
 
-    componentDidMount() {
-        if (window.FB) {
-            window.FB.XFBML.parse(document.getElementById('fb-page'));
-        }
-    }
     
     toggleEdit = () => this.setState({ edit: !this.state.edit });
 
@@ -33,7 +28,7 @@ export class Home extends Component {
                         </div>
                         <span className="col-sm-1"></span>
                         <div className="col-sm-4">
-                            <div className="fb-page" data-href="https://www.facebook.com/fresnoarchers/" data-tabs="timeline" data-width="350" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fresnoarchers/" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fresnoarchers/">Fresno Field Archers</a></blockquote></div>    
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffresnoarchers&tabs=timeline&width=350&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="350" height="600" style={{border:"none",overflow:"hidden"}} scrolling="no" frameBorder="0" allowFullScreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>    
                         </div> 
                         
                     </div>
