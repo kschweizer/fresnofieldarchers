@@ -32,7 +32,7 @@ function Album(props) {
                         {props.album ? (props.album.photos.map(photo => (
                             <div key={photo.id} className="photo grid-item">
                                 <a href={photo.image}>
-                                    <img src={photo.thumbnail} />
+                                    <img className="photo-thumbnail" src={photo.thumbnail} />
                                 </a>
                             </div>
                         ))) : (

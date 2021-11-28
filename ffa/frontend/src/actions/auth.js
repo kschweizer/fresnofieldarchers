@@ -59,18 +59,11 @@ export const register = ({ username, email, password }) => (dispatch) => {
 };
 
 export const login = (username, password) => (dispatch) => {
-    // Headers
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-
     // Request Body
     const body = { username, password };
 
 
-    axios.post('/api/auth/login', body, config)
+    axios.post('/api/auth/login', body)
         .then(res => {
             dispatch({
                 type: LOGIN_SUCCESS,

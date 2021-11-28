@@ -154,7 +154,7 @@ function Album(props) {
                             {props.album ? (props.album.photos.map(photo => (
                                 <div key={photo.id} className="photo grid-item">
                                     <a href={photo.image}>
-                                        <img src={photo.thumbnail} />
+                                        <img className="photo-thumbnail" src={photo.thumbnail} />
                                     </a>
                                     <Button className={selection.has(photo.id) ? "p-button-danger" : "p-button-success"} style={{position : 'absolute', left : '0px', zIndex : '10'}} onClick={toggleSelection.bind(this, photo.id)} icon={selection.has(photo.id) ? "pi pi-minus" : "pi pi-plus"}/>
                                 </div>

@@ -53,8 +53,13 @@
     position: relative;
     width: 150px;
     height: 150px;
-    overflow: hidden;
     float: left;
+}
+
+.photo-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 .content {
