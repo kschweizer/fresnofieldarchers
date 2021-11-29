@@ -47,13 +47,12 @@ export default function Event(props) {
                 <h5>{eventDate}</h5>
                 { eventFlyer ? (
                 <div className="event-flyer">
+                    <a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>
                     <Document className="pdf-viewer" file={eventFlyer} onLoadSuccess={onDocumentLoadSuccess1}>
                         {Array.from(new Array(numPages1), (el, index) => (
-                            <Page key={`page_${index + 1}`} pageNumber={index + 1} width={(width < 600) ? (250) : (550)} renderAnnotationLayer={false} />
+                            <Page key={`page_${index + 1}`} pageNumber={index + 1} width={(width < 800) ? (300) : (750)} renderAnnotationLayer={false} />
                         ))}
-                        
                     </Document>
-                    <a href={eventFlyer} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open flyer in separate window</a>
                 </div>
                 ) : null }
                 {eventScores ? (
@@ -61,12 +60,12 @@ export default function Event(props) {
                     <div className="event-header"><h3 className="event-title">{eventName} Scores</h3></div>
                     
                         <div>
+                            <a href={eventScores} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open scores in separate window</a>
                             <Document className="pdf-viewer" file={eventScores} onLoadSuccess={onDocumentLoadSuccess2}>
                                 {Array.from(new Array(numPages2), (el, index) => (
-                                    <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 600) ? (250) : (550)} />
+                                    <Page key={`page_${index + 1}`} pageNumber={index + 1} renderAnnotationLayer={false} width={(width < 800) ? (300) : (750)} />
                                 ))}
                             </Document>
-                            <a href={eventScores} type="application/pdf" target="_blank" rel="noopener noreferrer" >Open scores in separate window</a>
                         </div>
                 </div>
                 ) : null }
