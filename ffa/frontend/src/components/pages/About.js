@@ -73,7 +73,7 @@ export default function About() {
                 </h1>
                 <div className="map-container">
                     { mapWidth ? (
-                        <iframe width={mapWidth} height="450" frameBorder="0" 
+                        <iframe referrerpolicy="origin" width={mapWidth} height="450" frameBorder="0" 
                             src="https://www.google.com/maps/embed/v1/place?q=39000%20Dunlap%20Rd%2C%20Dunlap%2C%20CA%2093621&key=AIzaSyC5UDGhop7LmoifIbwHmHQdg2HAXneKu00" 
                             allowFullScreen>
                         </iframe>
